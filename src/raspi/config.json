@@ -1,0 +1,6 @@
+{
+  "id_booth": "Flashmatik",
+	"log_filename": "log.txt",
+	"price":400,
+  "cashless_mdb": false
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297.13229mm"
+   height="83.31382mm"
+   viewBox="0 0 297.13229 83.31382"
+   version="1.1"
+   id="svg3211"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="photosPretesDs5mn.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3213"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.83972969"
+     inkscape:cx="571.61251"
+     inkscape:cy="135.75797"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs3208">
+    <rect
+       x="27.179653"
+       y="66.590149"
+       width="1049.1346"
+       height="203.8474"
+       id="rect3334" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.066146,0.066146)">
+    <rect
+       style="fill:#000000;stroke:#ff00ff;stroke-width:0.132292;stroke-linecap:round;stroke-miterlimit:29.5;paint-order:stroke fill markers"
+       id="rect3551"
+       width="297"
+       height="83.181526"
+       x="0"
+       y="0"
+       rx="1.585482"
+       ry="1.5854821" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,40.903466,-0.35956416)"
+       id="text3332"
+       style="font-size:53.3333px;font-family:MicrogrammaDBolExt;-inkscape-font-specification:'MicrogrammaDBolExt, Normal';text-orientation:upright;white-space:pre;shape-inside:url(#rect3334);display:inline;fill:#000000;stroke:#ff00ff;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:29.5;paint-order:stroke fill markers"><tspan
+         x="27.179688"
+         y="115.0794"
+         id="tspan3595">Vos photos prêtes dans 5 mn.</tspan></text>
+  </g>
+</svg>

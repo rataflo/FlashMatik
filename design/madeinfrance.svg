@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="525.00494mm"
+   height="29.723558mm"
+   viewBox="0 0 525.00494 29.723558"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="madeinfrance.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="madeinfrance.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.38"
+     inkscape:cx="755.26316"
+     inkscape:cy="98.684211"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="4.1666665"
+       y="8.333333"
+       width="2641.6667"
+       height="362.5"
+       id="rect2" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0.06600001,0.06600001)">
+    <rect
+       style="fill:#388274;fill-opacity:1;stroke:#ff00ff;stroke-width:0.0625469"
+       id="rect1"
+       width="524.94238"
+       height="29.661011"
+       x="-0.034726564"
+       y="-0.034726564"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text1"
+       style="font-size:192px;font-family:MicrogrammaDBolExt;-inkscape-font-specification:MicrogrammaDBolExt;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);fill:#388274;fill-opacity:1;stroke:#ff00ff;stroke-width:0.498898" />
+    <text
+       xml:space="preserve"
+       style="font-size:50.8px;font-family:MicrogrammaDBolExt;-inkscape-font-specification:MicrogrammaDBolExt;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#388274;fill-opacity:1;stroke:#ff00ff;stroke-width:0.132"
+       x="1.2764983"
+       y="20.888155"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.4px;font-family:MicrogrammaDBolExt;-inkscape-font-specification:'MicrogrammaDBolExt, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:none;stroke-width:0.132"
+         x="1.2764983"
+         y="20.888155">Made in France by Minute papillons </tspan></text>
+  </g>
+</svg>

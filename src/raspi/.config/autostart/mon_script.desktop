@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=libcamera-hello --viewfinder-width 853 --viewfinder-height 480 --fullscreen --timeout 0 --framerate 50 --vflip 1 --hflip 1
+Hidden=false
+NoDisplay=false
+Name=Mon Script
+Comment=Exécute ma commande au démarrage

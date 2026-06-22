@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="122.38412mm"
+   height="58.022121mm"
+   viewBox="0 0 122.38412 58.022121"
+   version="1.1"
+   id="svg3600"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="4poses4Flashs.svg"
+   inkscape:export-filename="4poses4Flashs.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3602"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.7"
+     inkscape:cx="278.82353"
+     inkscape:cy="189.70588"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs3597">
+    <rect
+       x="0"
+       y="0"
+       width="793.70081"
+       height="438.95139"
+       id="rect3723" />
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(4.1299053,0.40623851)">
+    <rect
+       style="fill:#388274;stroke:#ff00ff;stroke-width:0.132292;stroke-linecap:round;stroke-miterlimit:29.5;paint-order:stroke fill markers;fill-opacity:1"
+       id="rect3727"
+       width="122.25182"
+       height="57.889828"
+       x="-3.7524848"
+       y="-0.34009251"
+       rx="1.585482"
+       ry="1.5854821" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text3721"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:MicrogrammaDBolExt;-inkscape-font-specification:'MicrogrammaDBolExt, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-orientation:upright;white-space:pre;shape-inside:url(#rect3723);fill:#388274;stroke:#ff00ff;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:29.5;paint-order:stroke fill markers;fill-opacity:1"><tspan
+         x="0"
+         y="77.583301"
+         id="tspan1">4 Poses 
+</tspan><tspan
+         x="0"
+         y="184.24993"
+         id="tspan2">4 Flashs</tspan></text>
+  </g>
+</svg>

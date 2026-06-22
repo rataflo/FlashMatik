@@ -1,0 +1,602 @@
+2026-06-15 15:22:46 INFO initFlashmatik
+2026-06-15 15:22:46 INFO initGPIO
+2026-06-15 15:22:46 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:22:46 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 332, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 176, in initPhotobooth
+    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:28:45 INFO initFlashmatik
+2026-06-15 15:28:45 INFO initGPIO
+2026-06-15 15:28:45 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:28:45 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 334, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 178, in initPhotobooth
+    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:28:45 INFO Stop
+2026-06-15 15:30:02 INFO initFlashmatik
+2026-06-15 15:30:02 INFO initGPIO
+2026-06-15 15:30:02 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:30:02 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 333, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 177, in initPhotobooth
+    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:30:02 INFO Stop
+2026-06-15 15:40:20 INFO initFlashmatik
+2026-06-15 15:40:20 INFO initGPIO
+2026-06-15 15:40:20 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:40:20 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 333, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 177, in initPhotobooth
+    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:40:20 INFO Stop
+2026-06-15 15:50:41 INFO initFlashmatik
+2026-06-15 15:50:41 INFO initGPIO
+2026-06-15 15:50:41 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:50:41 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 332, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 175, in initPhotobooth
+    coin_button = Button(COIN_PIN, pull_up=True)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/devices.py", line 108, in __call__
+    self = super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/input_devices.py", line 412, in __init__
+    super().__init__(
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/mixins.py", line 417, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/input_devices.py", line 168, in __init__
+    self.pin.when_changed = self._pin_changed
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/pins/__init__.py", line 471, in <lambda>
+    lambda self, value: self._set_when_changed(value),
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/pins/pi.py", line 639, in _set_when_changed
+    self._enable_event_detect()
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/gpiozero/pins/rpigpio.py", line 220, in _enable_event_detect
+    GPIO.add_event_detect(
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:53:28 INFO initFlashmatik
+2026-06-15 15:53:28 INFO initGPIO
+2026-06-15 15:53:28 ERROR Unexpected error: Failed to add edge detection
+2026-06-15 15:53:28 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 333, in <module>
+    initPhotobooth()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 177, in initPhotobooth
+    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
+RuntimeError: Failed to add edge detection
+
+2026-06-15 15:53:28 INFO Stop
+2026-06-15 15:53:53 INFO initFlashmatik
+2026-06-15 15:53:53 INFO initGPIO
+2026-06-15 15:53:53 INFO initSegment
+2026-06-15 15:53:53 INFO initConfig
+2026-06-15 15:53:53 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 15:53:53 INFO Init OK
+2026-06-15 15:53:53 ERROR Fatal error in main: name 'init_camera' is not defined
+2026-06-15 15:53:53 ERROR Unexpected error: name 'init_camera' is not defined
+2026-06-15 15:53:53 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 335, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 244, in main
+    camera = init_camera()
+             ^^^^^^^^^^^
+NameError: name 'init_camera' is not defined
+
+2026-06-15 15:53:54 INFO Stop
+2026-06-15 15:54:13 INFO initFlashmatik
+2026-06-15 15:54:13 INFO initGPIO
+2026-06-15 15:54:13 INFO initSegment
+2026-06-15 15:54:13 INFO initConfig
+2026-06-15 15:54:13 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 15:54:13 INFO Init OK
+2026-06-15 15:54:13 INFO Démarrage OK
+2026-06-15 15:54:13 ERROR Fatal error in main: cannot access local variable 'START' where it is not associated with a value
+2026-06-15 15:54:13 ERROR Unexpected error: cannot access local variable 'START' where it is not associated with a value
+2026-06-15 15:54:13 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 334, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 285, in main
+    if START:
+       ^^^^^
+UnboundLocalError: cannot access local variable 'START' where it is not associated with a value
+
+2026-06-15 15:54:13 INFO Stop
+2026-06-15 15:57:59 INFO initFlashmatik
+2026-06-15 15:57:59 INFO initGPIO
+2026-06-15 15:57:59 INFO initSegment
+2026-06-15 15:57:59 INFO initConfig
+2026-06-15 15:57:59 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 15:57:59 INFO Init OK
+2026-06-15 15:57:59 INFO Démarrage OK
+2026-06-15 16:32:57 INFO initFlashmatik
+2026-06-15 16:32:57 INFO initGPIO
+2026-06-15 16:32:57 INFO initSegment
+2026-06-15 16:32:57 INFO initConfig
+2026-06-15 16:32:57 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:32:57 INFO Init OK
+2026-06-15 16:32:57 INFO Démarrage OK
+2026-06-15 16:34:27 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:34:27 INFO Stop
+2026-06-15 16:34:29 INFO initFlashmatik
+2026-06-15 16:34:29 INFO initGPIO
+2026-06-15 16:34:29 INFO initSegment
+2026-06-15 16:34:29 INFO initConfig
+2026-06-15 16:34:29 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:34:29 INFO Init OK
+2026-06-15 16:34:29 INFO Démarrage OK
+2026-06-15 16:37:07 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:37:07 INFO Stop
+2026-06-15 16:37:09 INFO initFlashmatik
+2026-06-15 16:37:09 INFO initGPIO
+2026-06-15 16:37:09 INFO initSegment
+2026-06-15 16:37:09 INFO initConfig
+2026-06-15 16:37:09 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:37:09 INFO Init OK
+2026-06-15 16:37:09 INFO Démarrage OK
+2026-06-15 16:37:24 INFO COINS
+2026-06-15 16:37:24 ERROR Erreur pendant la session: cannot access local variable 'MODE_PAIEMENT' where it is not associated with a value
+2026-06-15 16:37:24 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 290, in main
+    print(MODE_PAIEMENT)
+          ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'MODE_PAIEMENT' where it is not associated with a value
+
+2026-06-15 16:39:13 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:39:13 INFO Stop
+2026-06-15 16:39:15 INFO initFlashmatik
+2026-06-15 16:39:15 INFO initGPIO
+2026-06-15 16:39:15 INFO initSegment
+2026-06-15 16:39:15 INFO initConfig
+2026-06-15 16:39:15 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:39:15 INFO Init OK
+2026-06-15 16:39:15 INFO Démarrage OK
+2026-06-15 16:39:23 INFO COINS
+2026-06-15 16:41:07 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:41:07 INFO Stop
+2026-06-15 16:41:09 INFO initFlashmatik
+2026-06-15 16:41:09 INFO initGPIO
+2026-06-15 16:41:09 INFO initSegment
+2026-06-15 16:41:09 INFO initConfig
+2026-06-15 16:41:09 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:41:09 INFO Init OK
+2026-06-15 16:41:09 INFO Démarrage OK
+2026-06-15 16:41:24 INFO COINS
+2026-06-15 16:42:12 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:42:12 INFO Stop
+2026-06-15 16:42:14 INFO initFlashmatik
+2026-06-15 16:42:14 INFO initGPIO
+2026-06-15 16:42:14 INFO initSegment
+2026-06-15 16:42:14 INFO initConfig
+2026-06-15 16:42:14 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:42:14 INFO Init OK
+2026-06-15 16:42:14 INFO Démarrage OK
+2026-06-15 16:42:18 INFO COINS
+2026-06-15 16:42:18 INFO START
+2026-06-15 16:43:11 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:43:11 INFO Stop
+2026-06-15 16:43:12 INFO initFlashmatik
+2026-06-15 16:43:12 INFO initGPIO
+2026-06-15 16:43:12 INFO initSegment
+2026-06-15 16:43:12 INFO initConfig
+2026-06-15 16:43:12 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 16:43:12 INFO Init OK
+2026-06-15 16:43:12 INFO Démarrage OK
+2026-06-15 16:43:18 INFO COINS
+2026-06-15 16:43:18 INFO START
+2026-06-15 16:47:05 INFO Received keyboard interrupt, shutting down
+2026-06-15 16:47:05 INFO Stop
+2026-06-15 17:01:42 INFO initFlashmatik
+2026-06-15 17:01:42 INFO initGPIO
+2026-06-15 17:01:42 INFO initSegment
+2026-06-15 17:01:42 ERROR Arduino non trouvé: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'
+2026-06-15 17:01:42 INFO initConfig
+2026-06-15 17:01:42 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:01:42 INFO Init OK
+2026-06-15 17:01:42 INFO Démarrage OK
+2026-06-15 17:01:42 ERROR Fatal error in main: name 'arduino_ser' is not defined
+2026-06-15 17:01:42 ERROR Unexpected error: name 'arduino_ser' is not defined
+2026-06-15 17:01:42 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 345, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 300, in main
+    if arduino_ser and arduino_ser.in_waiting:
+       ^^^^^^^^^^^
+NameError: name 'arduino_ser' is not defined
+
+2026-06-15 17:01:42 INFO Stop
+2026-06-15 17:45:06 INFO initFlashmatik
+2026-06-15 17:45:06 INFO initGPIO
+2026-06-15 17:45:06 INFO initSegment
+2026-06-15 17:45:06 INFO Arduino connecté sur /dev/flashmatik
+2026-06-15 17:45:06 INFO initConfig
+2026-06-15 17:45:06 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:45:06 INFO Init OK
+2026-06-15 17:45:06 INFO Démarrage OK
+2026-06-15 17:46:37 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:46:37 INFO Stop
+2026-06-15 17:46:40 INFO initFlashmatik
+2026-06-15 17:46:40 INFO initGPIO
+2026-06-15 17:46:40 INFO initSegment
+2026-06-15 17:46:40 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:46:40 INFO initConfig
+2026-06-15 17:46:40 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:46:40 INFO Init OK
+2026-06-15 17:46:40 INFO Démarrage OK
+2026-06-15 17:47:42 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:47:42 INFO Stop
+2026-06-15 17:47:44 INFO initFlashmatik
+2026-06-15 17:47:44 INFO initGPIO
+2026-06-15 17:47:44 INFO initSegment
+2026-06-15 17:47:44 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:47:44 INFO initConfig
+2026-06-15 17:47:44 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:47:44 INFO Init OK
+2026-06-15 17:47:44 INFO Démarrage OK
+2026-06-15 17:47:56 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:47:56 INFO Stop
+2026-06-15 17:47:58 INFO initFlashmatik
+2026-06-15 17:47:58 INFO initGPIO
+2026-06-15 17:47:58 INFO initSegment
+2026-06-15 17:47:59 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:47:59 INFO initConfig
+2026-06-15 17:47:59 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:47:59 INFO Init OK
+2026-06-15 17:47:59 INFO Démarrage OK
+2026-06-15 17:48:08 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:48:08 INFO Stop
+2026-06-15 17:48:10 INFO initFlashmatik
+2026-06-15 17:48:10 INFO initGPIO
+2026-06-15 17:48:10 INFO initSegment
+2026-06-15 17:48:10 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:48:10 INFO initConfig
+2026-06-15 17:48:10 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:48:10 INFO Init OK
+2026-06-15 17:48:10 INFO Démarrage OK
+2026-06-15 17:50:59 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:50:59 INFO Stop
+2026-06-15 17:51:01 INFO initFlashmatik
+2026-06-15 17:51:01 INFO initGPIO
+2026-06-15 17:51:01 INFO initSegment
+2026-06-15 17:51:01 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:51:01 INFO initConfig
+2026-06-15 17:51:01 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:51:01 INFO Init OK
+2026-06-15 17:51:01 INFO Démarrage OK
+2026-06-15 17:52:20 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:52:20 INFO Stop
+2026-06-15 17:52:22 INFO initFlashmatik
+2026-06-15 17:52:22 INFO initGPIO
+2026-06-15 17:52:22 INFO initSegment
+2026-06-15 17:52:23 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:52:23 INFO initConfig
+2026-06-15 17:52:23 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:52:23 INFO Init OK
+2026-06-15 17:52:23 INFO Démarrage OK
+2026-06-15 17:52:31 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:52:31 INFO Stop
+2026-06-15 17:54:06 INFO initFlashmatik
+2026-06-15 17:54:06 INFO initGPIO
+2026-06-15 17:54:06 INFO initSegment
+2026-06-15 17:54:07 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:54:12 INFO initConfig
+2026-06-15 17:54:12 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:54:12 INFO Init OK
+2026-06-15 17:54:12 INFO Démarrage OK
+2026-06-15 17:55:57 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:55:57 INFO Stop
+2026-06-15 17:56:35 INFO initFlashmatik
+2026-06-15 17:56:35 INFO initGPIO
+2026-06-15 17:56:35 INFO initSegment
+2026-06-15 17:56:36 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:56:41 INFO initConfig
+2026-06-15 17:56:41 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:56:41 INFO Init OK
+2026-06-15 17:56:41 INFO Démarrage OK
+2026-06-15 17:56:47 INFO Received keyboard interrupt, shutting down
+2026-06-15 17:56:47 INFO Stop
+2026-06-15 17:58:40 INFO initFlashmatik
+2026-06-15 17:58:40 INFO initGPIO
+2026-06-15 17:58:40 INFO initSegment
+2026-06-15 17:58:40 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 17:58:45 INFO initConfig
+2026-06-15 17:58:45 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 17:58:45 INFO Init OK
+2026-06-15 17:58:45 INFO Démarrage OK
+2026-06-15 18:04:05 ERROR Fatal error in main: [Errno 5] Input/output error
+2026-06-15 18:04:05 ERROR Unexpected error: [Errno 5] Input/output error
+2026-06-15 18:04:05 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 360, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 314, in main
+    if arduino_ser and arduino_ser.in_waiting:
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+2026-06-15 18:04:05 INFO Stop
+2026-06-15 18:05:24 INFO initFlashmatik
+2026-06-15 18:05:24 INFO initGPIO
+2026-06-15 18:05:24 INFO initSegment
+2026-06-15 18:05:24 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 18:05:29 INFO initConfig
+2026-06-15 18:05:29 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 18:05:29 INFO Init OK
+2026-06-15 18:05:29 INFO Démarrage OK
+2026-06-15 18:05:29 ERROR Fatal error in main: 'Serial' object has no attribute 'safe_arduino_write'
+2026-06-15 18:05:29 ERROR Unexpected error: 'Serial' object has no attribute 'safe_arduino_write'
+2026-06-15 18:05:29 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 360, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 323, in main
+    arduino_ser.safe_arduino_write((REPLY_NO_START + "\n").encode())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Serial' object has no attribute 'safe_arduino_write'
+
+2026-06-15 18:05:29 INFO Stop
+2026-06-15 18:06:29 INFO initFlashmatik
+2026-06-15 18:06:29 INFO initGPIO
+2026-06-15 18:06:29 INFO initSegment
+2026-06-15 18:06:29 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 18:06:34 INFO initConfig
+2026-06-15 18:06:34 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 18:06:34 INFO Init OK
+2026-06-15 18:06:34 INFO Démarrage OK
+2026-06-15 18:07:33 INFO Received keyboard interrupt, shutting down
+2026-06-15 18:07:33 INFO Stop
+2026-06-15 18:07:35 INFO initFlashmatik
+2026-06-15 18:07:35 INFO initGPIO
+2026-06-15 18:07:35 INFO initSegment
+2026-06-15 18:07:36 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 18:07:36 INFO initConfig
+2026-06-15 18:07:36 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 18:07:36 INFO Init OK
+2026-06-15 18:07:36 INFO Démarrage OK
+2026-06-15 18:07:53 INFO COINS
+2026-06-15 18:07:53 INFO Arduino demande un start - envoi START
+2026-06-15 18:07:54 INFO Arduino a terminé la séquence
+2026-06-15 18:43:30 INFO initFlashmatik
+2026-06-15 18:43:30 INFO initGPIO
+2026-06-15 18:43:30 INFO initSegment
+2026-06-15 18:43:30 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-15 18:43:30 INFO initConfig
+2026-06-15 18:43:30 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-15 18:43:31 INFO Init OK
+2026-06-15 18:43:31 INFO Démarrage OK
+2026-06-15 18:43:45 INFO COINS
+2026-06-15 18:43:46 INFO Arduino demande un start - envoi START
+2026-06-15 18:43:46 INFO Arduino a terminé la séquence
+2026-06-15 18:44:51 INFO COINS
+2026-06-15 18:44:51 INFO Arduino demande un start - envoi START
+2026-06-15 18:44:51 INFO Arduino a terminé la séquence
+2026-06-15 18:51:11 INFO Received keyboard interrupt, shutting down
+2026-06-15 18:51:11 INFO Stop
+2026-06-16 16:15:53 INFO initFlashmatik
+2026-06-16 16:15:53 INFO initGPIO
+2026-06-16 16:15:53 INFO initSegment
+2026-06-16 16:15:54 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-16 16:15:54 INFO initConfig
+2026-06-16 16:15:54 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-16 16:15:54 INFO Init OK
+2026-06-16 16:15:54 INFO Démarrage OK
+2026-06-16 16:15:58 INFO Received keyboard interrupt, shutting down
+2026-06-16 16:15:58 INFO Stop
+2026-06-16 16:16:45 INFO initFlashmatik
+2026-06-16 16:16:45 INFO initGPIO
+2026-06-16 16:16:45 INFO initSegment
+2026-06-16 16:16:46 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-16 16:16:46 INFO initConfig
+2026-06-16 16:16:46 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-16 16:16:46 INFO Init OK
+2026-06-16 16:16:46 INFO Démarrage OK
+2026-06-16 16:16:55 INFO Received keyboard interrupt, shutting down
+2026-06-16 16:16:56 INFO Stop
+2026-06-16 16:33:18 INFO initFlashmatik
+2026-06-16 16:33:18 INFO initGPIO
+2026-06-16 16:33:18 INFO initSegment
+2026-06-16 16:33:18 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-16 16:33:18 INFO initConfig
+2026-06-16 16:33:18 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-16 16:33:18 INFO Init OK
+2026-06-16 16:33:18 INFO Démarrage OK
+2026-06-16 16:34:54 INFO Received keyboard interrupt, shutting down
+2026-06-16 16:34:54 INFO Stop
+2026-06-16 16:34:55 INFO initFlashmatik
+2026-06-16 16:34:55 INFO initGPIO
+2026-06-16 16:34:55 INFO initSegment
+2026-06-16 16:34:55 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-16 16:34:55 INFO initConfig
+2026-06-16 16:34:55 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-16 16:34:55 INFO Init OK
+2026-06-16 16:34:55 INFO Démarrage OK
+2026-06-16 16:35:32 INFO Received keyboard interrupt, shutting down
+2026-06-16 16:35:32 INFO Stop
+2026-06-16 16:35:33 INFO initFlashmatik
+2026-06-16 16:35:33 INFO initGPIO
+2026-06-16 16:35:33 INFO initSegment
+2026-06-16 16:35:34 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-16 16:35:34 INFO initConfig
+2026-06-16 16:35:34 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-16 16:35:34 INFO Init OK
+2026-06-16 16:35:34 INFO Démarrage OK
+2026-06-16 16:36:16 INFO Received keyboard interrupt, shutting down
+2026-06-16 16:36:17 INFO Stop
+2026-06-17 16:36:02 INFO initFlashmatik
+2026-06-17 16:36:02 INFO initGPIO
+2026-06-17 16:36:02 INFO initSegment
+2026-06-17 16:36:03 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-17 16:36:03 INFO initConfig
+2026-06-17 16:36:03 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-17 16:36:03 INFO Init OK
+2026-06-17 16:36:03 INFO Démarrage OK
+                                                                                               2026-06-17 16:36:46 INFO initFlashmatik
+2026-06-17 16:36:46 INFO initGPIO
+2026-06-17 16:36:46 INFO initSegment
+2026-06-17 16:36:46 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:48 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:50 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:52 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:54 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:56 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:36:58 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:00 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:02 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:04 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:06 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:08 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:10 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:37:12 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:22 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:24 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:26 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:28 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:30 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:32 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:34 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:36 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:38 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:40 ERROR Échec connexion: [Errno 2] could not open port /dev/flashmatik: [Errno 2] No such file or directory: '/dev/flashmatik', nouvel essai dans 2s
+2026-06-17 16:38:43 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-17 16:38:43 INFO initConfig
+2026-06-17 16:38:43 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-17 16:38:43 INFO Init OK
+2026-06-17 16:38:43 INFO Démarrage OK
+2026-06-17 16:38:59 INFO COINS
+2026-06-17 16:38:59 INFO Arduino demande un start - envoi START
+2026-06-17 16:42:41 INFO COINS
+2026-06-17 16:42:42 INFO Arduino demande un start - envoi START
+2026-06-17 16:43:28 INFO COINS
+2026-06-17 16:44:04 INFO Arduino demande un start - envoi START
+2026-06-17 16:51:17 ERROR Fatal error in main: [Errno 5] Input/output error
+2026-06-17 16:51:17 ERROR Unexpected error: [Errno 5] Input/output error
+2026-06-17 16:51:17 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 373, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 330, in main
+    if arduino_ser and arduino_ser.in_waiting:
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+2026-06-17 16:51:17 INFO Stop
+2026-06-18 17:37:32 INFO initFlashmatik
+2026-06-18 17:37:32 INFO initGPIO
+2026-06-18 17:37:32 INFO initSegment
+2026-06-18 17:37:33 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-18 17:37:33 INFO initConfig
+2026-06-18 17:37:33 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-18 17:37:33 INFO Init OK
+2026-06-18 17:37:33 INFO Démarrage OK
+2026-06-18 18:04:58 INFO COINS
+2026-06-18 18:04:58 INFO Arduino demande un start - envoi START
+2026-06-18 18:07:34 INFO initFlashmatik
+2026-06-18 18:07:34 INFO initGPIO
+2026-06-18 18:07:34 INFO initSegment
+2026-06-18 18:07:35 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-18 18:07:35 INFO initConfig
+2026-06-18 18:07:35 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-18 18:07:35 INFO Init OK
+2026-06-18 18:07:35 INFO Démarrage OK
+2026-06-18 18:08:33 INFO COINS
+2026-06-18 18:08:33 INFO Arduino demande un start - envoi START
+2026-06-18 18:09:12 ERROR Fatal error in main: [Errno 5] Input/output error
+2026-06-18 18:09:12 ERROR Unexpected error: [Errno 5] Input/output error
+2026-06-18 18:09:12 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 373, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 330, in main
+    if arduino_ser and arduino_ser.in_waiting:
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+2026-06-18 18:09:12 INFO Stop
+2026-06-18 19:20:10 INFO initFlashmatik
+2026-06-18 19:20:10 INFO initGPIO
+2026-06-18 19:20:10 INFO initSegment
+2026-06-18 19:20:11 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-18 19:20:11 INFO initConfig
+2026-06-18 19:20:11 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-18 19:20:11 INFO Init OK
+2026-06-18 19:20:11 INFO Démarrage OK
+2026-06-18 19:22:21 INFO COINS
+2026-06-18 19:22:21 INFO Arduino demande un start - envoi START
+2026-06-18 19:26:53 INFO COINS
+2026-06-18 19:26:53 INFO Arduino demande un start - envoi START
+2026-06-18 19:35:36 INFO COINS
+2026-06-18 19:35:37 INFO Arduino demande un start - envoi START
+2026-06-18 19:36:12 INFO COINS
+2026-06-18 19:36:27 INFO Arduino demande un start - envoi START
+2026-06-18 19:38:35 INFO COINS
+2026-06-18 19:38:36 INFO Arduino demande un start - envoi START
+2026-06-18 19:39:24 INFO COINS
+2026-06-18 19:39:36 INFO Arduino demande un start - envoi START
+2026-06-18 19:44:22 INFO COINS
+2026-06-18 19:46:17 INFO Arduino demande un start - envoi START
+2026-06-18 19:49:28 INFO COINS
+2026-06-18 19:49:28 INFO Arduino demande un start - envoi START
+2026-06-18 19:49:35 INFO COINS
+2026-06-18 19:57:19 INFO Arduino demande un start - envoi START
+2026-06-18 19:57:56 INFO Arduino demande un start - envoi START
+2026-06-18 19:57:56 INFO COINS
+2026-06-18 19:59:09 INFO COINS
+2026-06-18 19:59:10 INFO Arduino demande un start - envoi START
+2026-06-18 19:59:30 INFO COINS
+2026-06-18 20:00:14 INFO Arduino demande un start - envoi START
+2026-06-18 20:05:36 INFO COINS
+2026-06-18 20:05:33 INFO initFlashmatik
+2026-06-18 20:05:33 INFO initGPIO
+2026-06-18 20:05:33 INFO initSegment
+2026-06-18 20:05:33 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-18 20:05:33 INFO initConfig
+2026-06-18 20:05:33 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-18 20:05:33 INFO Init OK
+2026-06-18 20:05:33 INFO Démarrage OK
+2026-06-18 20:08:29 INFO COINS
+2026-06-18 20:08:29 INFO Arduino demande un start - envoi START
+2026-06-18 20:08:34 ERROR Fatal error in main: [Errno 5] Input/output error
+2026-06-18 20:08:34 ERROR Unexpected error: [Errno 5] Input/output error
+2026-06-18 20:08:34 ERROR Traceback (most recent call last):
+  File "/home/minutepapillons/photomaiton/base/main.py", line 373, in <module>
+    main()
+  File "/home/minutepapillons/photomaiton/base/main.py", line 330, in main
+    if arduino_ser and arduino_ser.in_waiting:
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/minutepapillons/photomaiton/base/booth/lib/python3.11/site-packages/serial/serialposix.py", line 549, in in_waiting
+    s = fcntl.ioctl(self.fd, TIOCINQ, TIOCM_zero_str)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+2026-06-18 20:08:34 INFO Stop
+2026-06-18 20:16:38 INFO initFlashmatik
+2026-06-18 20:16:38 INFO initGPIO
+2026-06-18 20:16:38 INFO initSegment
+2026-06-18 20:16:39 INFO Arduino connecté sur /dev/flashmatik (reset évité)
+2026-06-18 20:16:39 INFO initConfig
+2026-06-18 20:16:39 INFO Config loaded: price=400, cashless_mdb=False
+2026-06-18 20:16:39 INFO Init OK
+2026-06-18 20:16:39 INFO Démarrage OK
+2026-06-18 20:18:31 INFO COINS
+2026-06-18 20:18:31 INFO Arduino demande un start - envoi START
+2026-06-18 20:18:34 INFO COINS
+2026-06-18 20:19:36 INFO Arduino demande un start - envoi START
+2026-06-21 18:32:08 INFO COINS

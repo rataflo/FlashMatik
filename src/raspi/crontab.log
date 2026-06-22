@@ -1,0 +1,5 @@
+/bin/sh: 1: /home/minutepapillons/photomaiton/base/boothlauncher.sh: Permission denied
+/usr/bin/env: ‘bash\r’: No such file or directory
+/usr/bin/env: use -[v]S to pass options in shebang lines
+/usr/bin/env: ‘bash\r’: No such file or directory
+/usr/bin/env: use -[v]S to pass options in shebang lines
