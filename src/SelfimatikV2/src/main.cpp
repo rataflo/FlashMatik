@@ -134,6 +134,7 @@ void setup() {
 
     shutter.displayNumber(0);
     printStartup("init OK");
+    debug("init","OK");
 
     /*#ifdef SIMUL_MODE
         photoState = COUNTDOWN;

@@ -83,7 +83,7 @@ void Shutter::init() {
         homing++;
         delay(5);
     }
-    Serial.println(homing);
+    //Serial.println(homing);
     stepper.stop();
     stepper.setCurrentPosition(0);
     stepper.run();

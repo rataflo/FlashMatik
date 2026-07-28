@@ -67,7 +67,7 @@ void Scissor::close() {
     if (digitalReadFast(SCISSOR_ENDSTOP_PIN)) {
         stepper.run();
     } else {
-        Serial.println(stepper.currentPosition());
+        //Serial.println(stepper.currentPosition());
         stepper.stop();
         digitalWrite(SCISSOR_PIN_ENABLE, HIGH);
         bMoving = false;

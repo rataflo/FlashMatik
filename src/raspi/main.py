@@ -345,7 +345,7 @@ def main():
 
                 elif line == "DONE":
                     # La séquence est terminée
-                    #logging.info("Arduino a terminé la séquence")
+                    logging.info("Arduino valide le start")
                     # Valider le paiement CB si nécessaire
                     if CONFIG.cashless_mdb and mdb_manager and cb_transaction_active:
                         logging.info("Validation transaction CB")
@@ -363,7 +363,7 @@ def main():
                     START = False
                     COINS = CONFIG.price
                 else:
-                    logging.error("Arduino: %s", line)
+                    logging.info("Arduino: %s", line)
                     
                 
     except KeyboardInterrupt:

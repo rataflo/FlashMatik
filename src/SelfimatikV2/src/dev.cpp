@@ -95,7 +95,7 @@ void Dev::initY() {
     }
     stepperY.stop();
     stepperY.run();
-    Serial.println(stepperY.currentPosition());
+    //Serial.println(stepperY.currentPosition());
     stepperY.setCurrentPosition(0);
     stepperY.setMaxSpeed(Y_SPEED);
     stepperY.setAcceleration(Y_ACCEL);
@@ -214,7 +214,7 @@ void Dev::rotateExit(){
     }
 
     if (stepperRot.distanceToGo() != 0) {
-        Serial.println(stepperRot.distanceToGo());
+        //Serial.println(stepperRot.distanceToGo());
         stepperRot.run();
     }else{
         stepperRot.setCurrentPosition(0);
@@ -258,7 +258,7 @@ void Dev::up(bool bActivateExit, long nbSteps) {
 
     if(!bYMoving){
         debug("up", String("begin"));
-        Serial.println(nbSteps);
+        //Serial.println(nbSteps);
         enableY();
         stepperY.setCurrentPosition(0);
         stepperY.setMaxSpeed(Y_SPEED);
