@@ -28,7 +28,7 @@ void PaperHandler::movePaperFirstShot() {
         } else if (!bRewindStep2 && !bSwitch) { // init move after opto endstop reached
             // Init second move after opto endstop reached
             stepper.setCurrentPosition(0);
-            stepper.moveTo(-DELTA_FIRST_SHOT);
+            stepper.moveTo(-parameters.params.deltaFirstShot);
             bRewindStep2 = true;
         } else if(bRewindStep2 && stepper.distanceToGo() != 0){
             // second rewind to reach the deltaFirstShot position
@@ -87,7 +87,7 @@ void PaperHandler::init() {
     }
     stepper.stop();
     stepper.setCurrentPosition(0);
-    stepper.moveTo(-DELTA_FIRST_SHOT);
+    stepper.moveTo(-parameters.params.deltaFirstShot);
 
     while (stepper.distanceToGo() != 0) {
         stepper.run();
@@ -105,7 +105,7 @@ void PaperHandler::movePaperNextShot() {
         stepper.setCurrentPosition(0);
         stepper.setMaxSpeed(PAPER_OUT_SPEED);
         stepper.setAcceleration(PAPER_OUT_ACCEL);
-        stepper.moveTo(NB_STEP_PAPER_ONE_SHOT);
+        stepper.moveTo(parameters.params.nbStepOneShot);
         bMoving = true;
     }
     if (stepper.distanceToGo() != 0) {
@@ -136,7 +136,7 @@ void PaperHandler::movePaperOut() {
         stepper.setCurrentPosition(0);
         stepper.setMaxSpeed(PAPER_OUT_SPEED);
         stepper.setAcceleration(PAPER_OUT_ACCEL);
-        stepper.moveTo(NB_STEP_PAPER_OUT);
+        stepper.moveTo(parameters.params.nbStepPaperOut);
         bMoving = true;
     }
     if (stepper.distanceToGo() != 0) {
@@ -156,7 +156,7 @@ void PaperHandler::movePaperCutPos() {
         stepper.setCurrentPosition(0);
         stepper.setMaxSpeed(PAPER_OUT_SPEED);
         stepper.setAcceleration(PAPER_OUT_ACCEL);
-        stepper.moveTo(NB_STEP_PAPER_CUT);
+        stepper.moveTo(parameters.params.nbStepPaperCut);
         bMoving = true;
     }
     if (stepper.distanceToGo() != 0) {

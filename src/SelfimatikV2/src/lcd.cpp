@@ -56,9 +56,9 @@ MENU(menuTimes, "Times", doNothing ,noEvent, noStyle
 
 
 MENU(menuPaper, "Paper", doNothing ,noEvent, noStyle
-  ,FIELD(parameters.params.nbStepOneShot,"One shot","",-5000,0,1,0,saveParams ,exitEvent, noStyle)
-  ,FIELD(parameters.params.nbStepPaperCut,"Paper cut","",-6000,0,1,0,saveParams ,exitEvent, noStyle)
-  ,FIELD(parameters.params.nbStepPaperOut,"Paper out","",-6000,0,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.nbStepOneShot,"One shot","",0,5000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.nbStepPaperCut,"Paper cut","",0,6000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.nbStepPaperOut,"Paper out","",0,6000,1,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.deltaFirstShot,"Delta first","",0,1000,1,0,saveParams ,exitEvent, noStyle)
   ,EXIT("<Back")
 );

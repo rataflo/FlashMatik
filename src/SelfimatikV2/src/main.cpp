@@ -163,9 +163,9 @@ void handlePhotoState() {
                 if (Serial.available()) {
                     String reply = Serial.readStringUntil('\n');
                     if (reply == "START") {
+                        Serial.println("DONE");
                         photoRequested = true;
                         shutter.showArrowDown();
-                        Serial.println("DONE");
                         #ifdef SIMUL_MODE
                             photoState = COUNTDOWN;
                             shutter.setNumFrame(0);
@@ -178,6 +178,11 @@ void handlePhotoState() {
             }
             if (photoRequested && !digitalReadFast(START_BTN_PIN)) { // Bouton de démarrage pressé
                 Serial.println("Starting photo process...");
+                parameters.params.totStrip = parameters.params.totStrip + 1;
+                parameters.params.userCount1 = parameters.params.userCount1 + 1;
+                parameters.params.userCount2 = parameters.params.userCount2 + 1;
+                parameters.updateParameters();
+                
                 photoState = COUNTDOWN;
                 shutter.setNumFrame(0);
                 photoRequested = false;
@@ -310,6 +315,7 @@ void handlePhotoState() {
             if (BLUE_TIME == 0 || millis() - preFlashStartTime > BLUE_TIME) {
                 preflashStrip.setPixelColor(1, 0, 0, 0); 
                 preflashStrip.setPixelColor(4, 0, 0, 0); // All LEDs red
+                preflashStrip.clear();
                 preflashStrip.show();
                 photoState = TAKE_PHOTO;
             }

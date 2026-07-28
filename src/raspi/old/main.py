@@ -159,11 +159,11 @@ def coin_interrupt(channel):
     current_pulse_time = time.monotonic() * 1000
 
     while GPIO.input(COIN_PIN):
-        if (time.monotonic() * 1000) - current_pulse_time > PULSE_TIMEOUT:
+        if (time.monotonic() * 1000) - current_pulse_time > 200:
             return
     endMillis = time.monotonic() * 1000
-    if endMillis - current_pulse_time > 0.025 and  endMillis - current_pulse_time < 0.07 and endMillis - current_pulse_time < PULSE_TIMEOUT:
-        logging.info(f"Impulsion détectée, durée: {endMillis - current_pulse_time} ms")
+    if endMillis - current_pulse_time > 0.025 and endMillis - current_pulse_time < 200:
+        #print(f"Impulsion détectée, durée: {endMillis - current_pulse_time} ms")
 
         if(current_pulse_time - last_pulse_time > PULSE_TIMEOUT):
             pulse_count = 1  # Nouvelle série d'impulsions
@@ -172,9 +172,9 @@ def coin_interrupt(channel):
 
         last_pulse_time = current_pulse_time
 
-        #COINS = COINS - COINS_MULTI
-        #NBPIECES = NBPIECES +1
-        if not START and pulse_count >=4 :
+        COINS = COINS - COINS_MULTI
+        NBPIECES = NBPIECES +1
+        if not START and (pulse_count >=8 or COINS <= 0):
             START = True
             COINS = 0
             TM1637.show(str("busy"), colon=False)
@@ -342,6 +342,7 @@ def main():
                         # Un paiement est en attente
                         logging.info("Arduino demande un start - envoi START")
                         safe_arduino_write((REPLY_START + "\n").encode())
+                        START = False
 
                 elif line == "DONE":
                     # La séquence est terminée
@@ -362,8 +363,6 @@ def main():
                         cb_transaction_active = False
                     START = False
                     COINS = CONFIG.price
-                else:
-                    logging.error("Arduino: %s", line)
                     
                 
     except KeyboardInterrupt:

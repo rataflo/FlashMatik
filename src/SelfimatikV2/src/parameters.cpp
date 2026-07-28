@@ -45,7 +45,6 @@ void ParametersHandler::loadParameters() {
         params.shotFlashOn[3] = true;
         params.shotNbExps[3] = 1;
 
-        params.nbStepPaperCut = NB_STEP_PAPER_CUT;
         EEPROM.writeBlock(EEPROM_ADRESS, params);
     }
 
@@ -54,6 +53,15 @@ void ParametersHandler::loadParameters() {
         params.redTime = RED_TIME;
         params.greenTime = GREEN_TIME;
         params.blueTime = BLUE_TIME;
+        EEPROM.writeBlock(EEPROM_ADRESS, params);
+    }
+
+    if (params.checkCode < 3) {
+        params.checkCode = 3;
+        params.nbStepOneShot = NB_STEP_PAPER_ONE_SHOT;
+        params.nbStepPaperOut = NB_STEP_PAPER_OUT;
+        params.deltaFirstShot = DELTA_FIRST_SHOT;
+        params.nbStepPaperCut = NB_STEP_PAPER_CUT;
         EEPROM.writeBlock(EEPROM_ADRESS, params);
     }
 }

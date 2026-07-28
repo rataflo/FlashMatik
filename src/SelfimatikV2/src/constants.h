@@ -64,7 +64,7 @@
 
 #define SECOND_EXPOSURE_PIN 8
 
-#define PREFLASH_PIN 21
+#define PREFLASH_PIN 4
 #define NUMPIXELS 6
 
 #define LCD_PINS_RS        16
@@ -92,7 +92,7 @@
 #define SERVO_POS_OPEN_BEGIN 10
 #define SERVO_POS_OPEN_END 128
 #define SERVO_POS_CLOSE_BEGIN 140
-#define SERVO_POS_CLOSE_END 30
+#define SERVO_POS_CLOSE_END 27
 #define SERVO_TIME 1500
 
 #define ROT_SPEED 400
@@ -126,7 +126,7 @@
 
 #define NB_STEP_PAPER_ONE_SHOT 1240 // Number of step to move to another shot.
 #define NB_STEP_PAPER_CUT 2520 // Number of step to move paper to cut position
-#define NB_STEP_PAPER_OUT 3600 // Number of step to move out paper.Previous:1285
+#define NB_STEP_PAPER_OUT 3700 // Number of step to move out paper.Previous:1285
 #define PAPER_SPEED 1000
 #define PAPER_ACCEL 800
 #define PAPER_OUT_SPEED 1000
