@@ -11,3 +11,5 @@ sudo pkill -f python
 cd /home/minutepapillons/photomaiton/arduino
 
 avrdude -v -p atmega2560 -C /etc/avrdude.conf -c wiring -b 115200 -D -P /dev/flashmatik -U flash:w:firmware.hex:i
+
+sudo reboot
