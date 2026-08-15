@@ -172,6 +172,9 @@ struct storage {
 
   int agitateSteps = Y_AGITATE_STEPS;
 
+  int nbStepCenterArm = NB_STEP_CENTER_ARM;
+  int nbStepExit = NB_STEP_ROT_EXIT;
+
   bool userMode1 = false;
 
   int expTime = 1;

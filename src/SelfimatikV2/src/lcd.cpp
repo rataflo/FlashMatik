@@ -63,9 +63,16 @@ MENU(menuPaper, "Paper", doNothing ,noEvent, noStyle
   ,EXIT("<Back")
 );
 
+MENU(menuRotation, "Rotation", doNothing ,noEvent, noStyle
+  ,FIELD(parameters.params.nbStepCenterArm,"Stp center","",0,5000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.nbStepExit,"Stp exit","",0,5000,1,0,saveParams ,exitEvent, noStyle)
+  ,EXIT("<Back")
+);
+
 
 MENU(menuSetup,"Setup",showEvent,anyEvent,noStyle
   ,SUBMENU(menuPaper)
+  ,SUBMENU(menuRotation)
   ,EXIT("<Back")
 );
 

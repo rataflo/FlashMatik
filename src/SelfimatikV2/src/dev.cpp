@@ -122,7 +122,7 @@ void Dev::initRot() {
     stepperRot.stop();
     stepperRot.run();
     stepperRot.setCurrentPosition(0);
-    stepperRot.moveTo(NB_STEP_CENTER_ARM);
+    stepperRot.moveTo(parameters.params.nbStepCenterArm);
     while (stepperRot.distanceToGo() != 0) {
         stepperRot.run();
     }
@@ -169,7 +169,7 @@ void Dev::rotate(bool waitForPaper){
                 stepperRot.stop();
                 stepperRot.run();
                 stepperRot.setCurrentPosition(0); 
-                stepperRot.moveTo(NB_STEP_CENTER_ARM);
+                stepperRot.moveTo(parameters.params.nbStepCenterArm);
             }
         } else {
             stepperRot.run();
@@ -209,7 +209,7 @@ void Dev::rotateExit(){
         debug("rotateExit", String("begin"));
         digitalWrite(ROT_PIN_ENABLE, LOW);
         stepperRot.setCurrentPosition(0);
-        stepperRot.moveTo(NB_STEP_ROT_EXIT);
+        stepperRot.moveTo(parameters.params.nbStepExit);
         bRotMoving = true;
     }
 

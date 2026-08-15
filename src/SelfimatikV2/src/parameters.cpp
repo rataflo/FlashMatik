@@ -64,6 +64,13 @@ void ParametersHandler::loadParameters() {
         params.nbStepPaperCut = NB_STEP_PAPER_CUT;
         EEPROM.writeBlock(EEPROM_ADRESS, params);
     }
+
+    if( params.checkCode < 4) {
+        params.checkCode = 4;
+        params.nbStepCenterArm = NB_STEP_CENTER_ARM;
+        params.nbStepExit = NB_STEP_ROT_EXIT;
+        EEPROM.writeBlock(EEPROM_ADRESS, params);
+    }
 }
 
 void ParametersHandler::updateParameters() {
