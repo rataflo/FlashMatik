@@ -48,6 +48,7 @@ START = False
 CONFIG = type('Config', (), {})()
 CONFIG.price = 0
 CONFIG.cashless_mdb = False
+CONFIG.coin_acceptor = False
 NBPIECES = 0
 SCROLL_TEXT = "    Please insert coin    "
 SCROLL_POS = 0
@@ -188,7 +189,7 @@ def initCashlessMDB():
     try:
         mdb_manager = cashlessMDB.MDBManager(
             port='/dev/ttyACM0',
-            debug_mode=False,
+            debug_mode=True,
             callback=mdb_callback_handler
         )
         
@@ -208,8 +209,6 @@ def initPhotobooth():
     
     logging.info("initGPIO")
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(COIN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
     
     #7 segment
     logging.info("initSegment")
@@ -245,13 +244,18 @@ def initConfig():
     #load config depuis json,
     CONFIG.price = JSON["price"]
     CONFIG.cashless_mdb = JSON.get("cashless_mdb", False)
-    logging.info(f"Config loaded: price={CONFIG.price}, cashless_mdb={CONFIG.cashless_mdb}")
+    CONFIG.coin_acceptor = JSON.get("coin_acceptor", False)
+    logging.info(f"Config loaded: price={CONFIG.price}, cashless_mdb={CONFIG.cashless_mdb}, coin_acceptor={CONFIG.coin_acceptor}")
 
 # Applique la configuration sur la machine       
 def applyConfig():
     global CONFIG, COINS, TM1637, NBPIECES
 
     COINS = CONFIG.price
+
+    if CONFIG.coin_acceptor:
+        GPIO.setup(COIN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.add_event_detect(COIN_PIN, GPIO.FALLING, callback=coin_interrupt)
 
     #init cashless MDB
     if CONFIG.price == 0:
@@ -337,7 +341,6 @@ def main():
             if arduino_ser and arduino_ser.in_waiting:          
                 line = arduino_ser.readline().decode().strip()
                 if line == CMD_QUERY:
-                    
                     if START:
                         # Un paiement est en attente
                         logging.info("Arduino demande un start - envoi START")
@@ -351,6 +354,7 @@ def main():
                         logging.info("Validation transaction CB")
                         mdb_manager.confirm_service()
                         cb_transaction_active = False
+                        time.sleep(5)  # Attendre un peu pour s'assurer que la transaction est bien validée
                     # Réinitialiser START et le prix
                     START = False
                     COINS = CONFIG.price
@@ -360,6 +364,7 @@ def main():
                     if CONFIG.cashless_mdb and mdb_manager and cb_transaction_active:
                         mdb_manager.cancel_service()
                         cb_transaction_active = False
+                        time.sleep(5)
                     START = False
                     COINS = CONFIG.price
                 else:

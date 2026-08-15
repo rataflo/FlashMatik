@@ -23,7 +23,7 @@ VEND_TIMEOUT = 10  # SECONDES
 # Variables globales
 ser = None
 sio = None
-debug = False
+debug = True
 args = None
 
 class MDBManager:
@@ -56,7 +56,7 @@ class MDBManager:
             formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
             handler.setFormatter(formatter)
             self.logger.addHandler(handler)
-            self.logger.setLevel(logging.DEBUG if debug_mode else logging.INFO)
+            self.logger.setLevel(logging.DEBUG if debug_mode else logging.WARNING)
     
     def start(self):
         """Démarrer le manager et initialiser la communication série"""
@@ -135,7 +135,7 @@ class MDBManager:
             
         if self.current_transaction:
             self.logger.warning("Transaction déjà en cours")
-            return False
+            return True
             
         self.logger.info(f"Démarrage transaction: {amount}€")
         self.current_transaction = {
@@ -295,7 +295,8 @@ class MDBManager:
                 if 'd,STATUS,CREDIT,' in res:
                     # Détecter le montant inséré
                     try:
-                        credit_str = res[res.find('d,STATUS,CREDIT,')+16:len(res)-3]
+                        #credit_str = res[res.find('d,STATUS,CREDIT,')+16:len(res)-3]
+                        credit_str = res.split('d,STATUS,CREDIT,')[-1].split(',')[0]
                         cash = float(credit_str)
                         self.logger.info(f"Crédit détecté: {cash}€")
                         
@@ -364,15 +365,18 @@ class MDBManager:
             res = self._write_read("D,END")
             self.logger.debug(f"Confirmation transaction: {res}")
             
+            transaction = self.current_transaction.copy()
+            self._reset_for_next_transaction()
+
             if 'SUCCESS' in res or 'd,STATUS,IDLE' in res:
-                transaction = self.current_transaction.copy()
-                self._reset_for_next_transaction()
-                
                 self.logger.info(f"Transaction {transaction['amount']}€ confirmée avec succès")
                 return True
             else:
-                self.logger.error(f"Erreur confirmation: {res}")
-                return False
+                if not res:
+                    self.logger.warning("Réponse vide du terminal CB - Transaction considérée comme confirmée")
+                else:
+                    self.logger.warning(f"Réponse inattendue: {res} - Transaction considérée comme confirmée")
+                return True
                 
         except Exception as e:
             self.logger.error(f"Erreur confirmation transaction: {str(e)}")
