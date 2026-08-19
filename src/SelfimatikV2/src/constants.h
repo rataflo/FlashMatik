@@ -194,5 +194,46 @@ struct storage {
   int shotNbExps[4]={1,1,1,1};
 };
 
+enum PhotoState {
+    IDLE_PHOTO,
+    COUNTDOWN,
+    TAKE_PHOTO,
+    PAPER_NEXT_SHOT,
+    WAIT_DEV,
+    PAPER_CUT,
+    CUT,
+    CLOSE_SCISSOR,
+    PAPER_OUT,
+    PAPER_REWIND,
+    PREFLASH_START,
+    RED,
+    GREEN,
+    BLUE
+};
+
+enum DevState {
+    IDLE_DEV,
+    ROTATE,
+    DOWN,
+    UP,
+    AGITATE_UP,
+    AGITATE_DOWN,
+    WAIT_PAPER,
+    DOWN_ROT,
+    ROT_EXIT,
+    UP_EXIT,
+    DRIP,
+    WAIT_EXIT,
+    DOWN_FINISH,
+    UP_FINISH,
+    SECOND_EXPOSURE,
+    MANUAL_DOWN,
+    MANUAL_UP
+};
+
+// Déclaration des variables globales (extern)
+extern PhotoState photoState;
+extern DevState devState;
+
 
 #endif

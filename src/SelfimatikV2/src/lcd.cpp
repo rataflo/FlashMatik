@@ -34,6 +34,27 @@ result eraseCounter2(eventMask e, prompt &item){
   return proceed;
 }
 
+// --- Actions pour le contrôle manuel ---
+result manualUpAction(eventMask e, prompt &item) {
+    if (e == enterEvent) {
+        if (photoState == IDLE_PHOTO && devState == IDLE_DEV) {
+            Serial.println("MANUAL_UP from LCD");
+            devState = MANUAL_UP;
+        } 
+    }
+    return proceed;
+}
+
+result manualDownAction(eventMask e, prompt &item) {
+    if (e == enterEvent) {
+        if (photoState == IDLE_PHOTO && devState == IDLE_DEV) {
+            Serial.println("MANUAL_DOWN from LCD");
+            devState = MANUAL_DOWN;
+        }
+    }
+    return proceed;
+}
+
 MENU(menuData,"Data",showEvent,anyEvent,noStyle
   ,FIELD(parameters.params.totStrip,"Total"," ",0,0,0,0, doNothing ,noEvent, noStyle)
   ,FIELD(parameters.params.userCount1,"Counter 1","",0,0,0,0, doNothing ,noEvent, noStyle)
@@ -205,11 +226,19 @@ MENU(menuShot,"Shot",showEvent,anyEvent,noStyle
   ,EXIT("<Back")
 );
 
+// --- Menu de contrôle manuel ---
+MENU(menuManual, "Manual Control", doNothing, noEvent, noStyle
+    ,OP("Move UP", manualUpAction, enterEvent)
+    ,OP("Move DOWN", manualDownAction, enterEvent)
+    ,EXIT("<Back")
+);
+
 MENU(mainMenu,"Main menu",doNothing,noEvent,wrapStyle
   ,SUBMENU(menuShot)
   ,SUBMENU(menuTimes)
   ,SUBMENU(menuData)
   ,SUBMENU(menuSetup)
+  ,SUBMENU(menuManual)  
 );
 
 #define MAX_DEPTH 5

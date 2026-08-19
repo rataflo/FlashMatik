@@ -34,40 +34,6 @@ byte nbTotExp = 0;
 byte numExp = 0;
 byte numFrame = 0;
 
-enum PhotoState {
-    IDLE_PHOTO,
-    COUNTDOWN,
-    TAKE_PHOTO,
-    PAPER_NEXT_SHOT,
-    WAIT_DEV,
-    PAPER_CUT,
-    CUT,
-    CLOSE_SCISSOR,
-    PAPER_OUT,
-    PAPER_REWIND,
-    PREFLASH_START,
-    RED,
-    GREEN,
-    BLUE
-};
-
-enum DevState {
-    IDLE_DEV,
-    ROTATE,
-    DOWN,
-    UP,
-    AGITATE_UP,
-    AGITATE_DOWN,
-    WAIT_PAPER,
-    DOWN_ROT,
-    ROT_EXIT,
-    UP_EXIT,
-    DRIP,
-    WAIT_EXIT,
-    DOWN_FINISH,
-    UP_FINISH,
-    SECOND_EXPOSURE
-};
 
 PhotoState photoState = IDLE_PHOTO;
 DevState devState = IDLE_DEV;
@@ -89,6 +55,29 @@ void steppersTask();
 void handlePhotoState();
 void handleDevState();
 void emergencyShutdown(byte errorCode);
+
+const char* getDevStateName(DevState state) {
+    switch(state) {
+        case IDLE_DEV: return "IDLE_DEV";
+        case ROTATE: return "ROTATE";
+        case DOWN: return "DOWN";
+        case UP: return "UP";
+        case AGITATE_UP: return "AGITATE_UP";
+        case AGITATE_DOWN: return "AGITATE_DOWN";
+        case WAIT_PAPER: return "WAIT_PAPER";
+        case DOWN_ROT: return "DOWN_ROT";
+        case ROT_EXIT: return "ROT_EXIT";
+        case UP_EXIT: return "UP_EXIT";
+        case DRIP: return "DRIP";
+        case WAIT_EXIT: return "WAIT_EXIT";
+        case DOWN_FINISH: return "DOWN_FINISH";
+        case UP_FINISH: return "UP_FINISH";
+        case SECOND_EXPOSURE: return "SECOND_EXPOSURE";
+        case MANUAL_DOWN: return "MANUAL_DOWN";
+        case MANUAL_UP: return "MANUAL_UP";
+        default: return "UNKNOWN";
+    }
+}
 
 void setup() {
     pinModeFast(FLASH_PIN, OUTPUT);
@@ -163,7 +152,24 @@ void handlePhotoState() {
                 lastQuery = millis();
                 if (Serial.available()) {
                     String reply = Serial.readStringUntil('\n');
-                    if (reply == "START") {
+
+                    if (reply == "DOWN") {
+                        if (photoState == IDLE_PHOTO && devState == IDLE_DEV) {
+                            Serial.println("DOWN_START");
+                            devState = MANUAL_DOWN;
+                        } else {
+                            Serial.println("DOWN_NOT_READY");
+                        }
+                    }
+                    else if (reply == "UP") {
+                        if (photoState == IDLE_PHOTO && devState == IDLE_DEV) {
+                            Serial.println("UP_START");
+                            devState = MANUAL_UP;
+                        } else {
+                            Serial.println("UP_NOT_READY");
+                        }
+                    }
+                    else if (reply == "START") {
                         Serial.println("DONE");
                         photoRequested = true;
                         shutter.showArrowDown();
@@ -327,6 +333,11 @@ void handlePhotoState() {
 }
 
 void handleDevState() {
+
+    if(devState != olDevState){
+        Serial.println(getDevStateName(devState));
+        olDevState = devState;
+    }
     
     switch (devState) {
         case IDLE_DEV:
@@ -355,7 +366,7 @@ void handleDevState() {
         case DOWN:
             if(dev.servoFinished()){
                 if(!dev.isYEndMove()){
-                    dev.down(dev.isPair() ? -Y_PAIR_DISTANCE : -Y_IMPAIR_DISTANCE);
+                    dev.down(dev.isPair() ? -Y_PAIR_DISTANCE : -Y_IMPAIR_DISTANCE, false);
                 }else{
                     // if paper in tank 2 switch on light for second exposure.
                     if(dev.secondExposureNeeded()){
@@ -398,7 +409,7 @@ void handleDevState() {
         case UP:
             if(!dev.isYEndMove()){
                 digitalWriteFast(SECOND_EXPOSURE_PIN, LOW);
-                dev.up(false, dev.exitNeeded() ? Y_IMPAIR_DISTANCE : Y_DISTANCE);
+                dev.up(false, dev.exitNeeded() ? Y_IMPAIR_DISTANCE : Y_DISTANCE, false);
             }else{
                 dev.resetMove();
                 
@@ -485,6 +496,23 @@ void handleDevState() {
                 }else{
                     devState = ROTATE;
                 }
+            }
+            break;
+        case MANUAL_DOWN:
+            if(!dev.isYEndMove()){
+                dev.down( -Y_PAIR_DISTANCE, true);
+            }else{
+                dev.resetMove();
+                devState = IDLE_DEV;
+            }
+            break;
+
+        case MANUAL_UP:
+            if(!dev.isYEndMove()){
+                dev.up(false, Y_DISTANCE, true);
+            }else{
+                dev.resetMove();
+                devState = IDLE_DEV; 
             }
             break;
     }

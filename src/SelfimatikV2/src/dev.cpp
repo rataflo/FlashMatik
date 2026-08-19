@@ -224,7 +224,7 @@ void Dev::rotateExit(){
     }
 }
 
-void Dev::down(long nbSteps) {
+void Dev::down(long nbSteps, bool bManual) {
     if(servoStart != 0){
         return;
     }
@@ -232,8 +232,13 @@ void Dev::down(long nbSteps) {
         debug("down", String("begin"));
         enableY();
         stepperY.setCurrentPosition(0);
-        stepperY.setMaxSpeed(Y_DOWN_SPEED);
-        stepperY.setAcceleration(Y_DOWN_ACCEL);
+        if(bManual){
+            stepperY.setMaxSpeed(500);
+            stepperY.setAcceleration(100);
+        }else{
+            stepperY.setMaxSpeed(Y_DOWN_SPEED);
+            stepperY.setAcceleration(Y_DOWN_ACCEL);
+        }
         stepperY.moveTo(nbSteps);
         //stepperY.setSpeed(-Y_SPEED);
         bYMoving = true;
@@ -254,15 +259,20 @@ void Dev::down(long nbSteps) {
     }
 }
 
-void Dev::up(bool bActivateExit, long nbSteps) {
+void Dev::up(bool bActivateExit, long nbSteps, bool bManual) {
 
     if(!bYMoving){
         debug("up", String("begin"));
         //Serial.println(nbSteps);
         enableY();
         stepperY.setCurrentPosition(0);
-        stepperY.setMaxSpeed(Y_SPEED);
-        stepperY.setAcceleration(Y_ACCEL);
+        if(bManual){
+            stepperY.setMaxSpeed(500);
+            stepperY.setAcceleration(100);
+        }else{
+            stepperY.setMaxSpeed(Y_SPEED);
+            stepperY.setAcceleration(Y_ACCEL);
+        }
         stepperY.moveTo(nbSteps);
         bYMoving = true;
 

@@ -29,8 +29,8 @@ public:
     bool isYMoving();
     bool isYEndMove();
     void resetMove();
-    void down(long nbSteps);
-    void up(bool bActivateExit, long nbSteps);
+    void down(long nbSteps, bool bManual = false);
+    void up(bool bActivateExit, long nbSteps, bool bManual = false);
     void agitate(bool bUp);
     void drip();
     unsigned long getAgitateStart();
