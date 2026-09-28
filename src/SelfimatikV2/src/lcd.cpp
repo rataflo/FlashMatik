@@ -129,6 +129,14 @@ MENU(menuY, "Y axis", doNothing ,noEvent, noStyle
 );
 
 
+MENU(menuScissor, "Scissor", doNothing ,noEvent, noStyle
+  ,FIELD(parameters.params.scissorSpeed,"Speed","",1000,20000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.scissorAccel,"Accel","",1000,20000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.scissorStepOpened,"Step open","",50,2000,10,0,saveParams ,exitEvent, noStyle)
+  ,EXIT("<Back")
+);
+
+
 MENU(menuShutter, "Shutter", doNothing ,noEvent, noStyle
   ,FIELD(parameters.params.shutterSpeed,"Speed","",100,5000,100,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.shutterAccel,"Accel","",100,5000,100,0,saveParams ,exitEvent, noStyle)
@@ -143,6 +151,7 @@ MENU(menuSetup,"Setup",showEvent,anyEvent,noStyle
   ,SUBMENU(menuRotation)
   ,SUBMENU(menuY)
   ,SUBMENU(menuShutter)
+  ,SUBMENU(menuScissor)
   ,EXIT("<Back")
 );
 

@@ -1,4 +1,5 @@
 #include "scissor.h"
+#include "parameters.h"
 
 Scissor scissor;
 
@@ -31,8 +32,8 @@ void Scissor::init() {
     tmc.hstrt(5);               // Hysteresis start (0-7)
 
     stepper.setCurrentPosition(0);
-    stepper.setMaxSpeed(SCISSOR_SPEED);
-    stepper.setAcceleration(SCISSOR_ACCEL);
+    stepper.setMaxSpeed(parameters.params.scissorSpeed);
+    stepper.setAcceleration(parameters.params.scissorAccel);
     do {
         close();
     } while (!bEndMove);
@@ -44,7 +45,7 @@ void Scissor::cutPaper() {
         debug("cutPaper", String("begin"));
         digitalWrite(SCISSOR_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.moveTo(SCISSOR_STEP_OPENED);
+        stepper.moveTo(parameters.params.scissorStepOpened);
         bMoving = true;
     }
     if (stepper.distanceToGo() != 0) {
@@ -61,7 +62,7 @@ void Scissor::close() {
         debug("closeScissor", String("begin"));
         digitalWrite(SCISSOR_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.moveTo((-SCISSOR_STEP_OPENED) - 50);
+        stepper.moveTo((-parameters.params.scissorStepOpened) - 50);
         bMoving = true;
     }
     if (digitalReadFast(SCISSOR_ENDSTOP_PIN)) {
