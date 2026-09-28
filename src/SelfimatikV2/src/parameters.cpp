@@ -71,6 +71,47 @@ void ParametersHandler::loadParameters() {
         params.nbStepExit = NB_STEP_ROT_EXIT;
         EEPROM.writeBlock(EEPROM_ADRESS, params);
     }
+
+    if(params.checkCode < 5) {
+        // C0: nouveaux champs calibration, valeurs par defaut = anciennes macros en dur
+        params.checkCode = 5;
+        params.rotSpeed = ROT_SPEED;
+        params.rotAccel = ROT_ACCEL;
+        params.rotStepPair = X_ROTATE_PAIR;
+        params.rotStepImpair = X_ROTATE_IMPAIR;
+        params.manSpeed = 500;
+        params.manAccel = 100;
+        params.ySpeed = Y_SPEED;
+        params.yAccel = Y_ACCEL;
+        params.initSpeed = INIT_SPEED;
+        params.initAccel = INIT_ACCEL;
+        params.yDownSpeed = Y_DOWN_SPEED;
+        params.yDownAccel = Y_DOWN_ACCEL;
+        params.yAgitateSpeed = Y_AGITATE_SPEED;
+        params.yAgitateAccel = Y_AGITATE_ACCEL;
+        params.yDistance = Y_DISTANCE;
+        params.yPairDistance = Y_PAIR_DISTANCE;
+        params.yImpairDistance = Y_IMPAIR_DISTANCE;
+        params.yExitDistance = Y_EXIT_DISTANCE;
+        params.shutterSpeed = SHUTTER_SPEED;
+        params.shutterAccel = SHUTTER_ACCEL;
+        params.shutterStepRev = SHUTTER_STEP_REVOL;
+        params.flashTime = 20;
+        params.paperSpeed = PAPER_SPEED;
+        params.paperAccel = PAPER_ACCEL;
+        params.paperOutSpeed = PAPER_OUT_SPEED;
+        params.paperOutAccel = PAPER_OUT_ACCEL;
+        params.scissorSpeed = SCISSOR_SPEED;
+        params.scissorAccel = SCISSOR_ACCEL;
+        params.scissorStepOpened = SCISSOR_STEP_OPENED;
+        params.servoPosIdle = SERVO_POS_IDLE;
+        params.servoPosOpenBegin = SERVO_POS_OPEN_BEGIN;
+        params.servoPosOpenEnd = SERVO_POS_OPEN_END;
+        params.servoPosCloseBegin = SERVO_POS_CLOSE_BEGIN;
+        params.servoPosCloseEnd = SERVO_POS_CLOSE_END;
+        params.servoTime = SERVO_TIME;
+        EEPROM.writeBlock(EEPROM_ADRESS, params);
+    }
 }
 
 void ParametersHandler::updateParameters() {
