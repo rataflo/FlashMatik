@@ -90,19 +90,19 @@
 
 #define SERVO_POS_IDLE 10
 #define SERVO_POS_OPEN_BEGIN 10
-#define SERVO_POS_OPEN_END 128
+#define SERVO_POS_OPEN_END 125
 #define SERVO_POS_CLOSE_BEGIN 140
-#define SERVO_POS_CLOSE_END 27
+#define SERVO_POS_CLOSE_END 35
 #define SERVO_TIME 1500
 
-#define ROT_SPEED 400
-#define ROT_ACCEL 400
+#define ROT_SPEED 300
+#define ROT_ACCEL 300
 #define ROT_HALL_VALUE 530
 #define X_ROTATE_PAIR 300
-#define X_ROTATE_IMPAIR 320 //420
+#define X_ROTATE_IMPAIR 340 //420
 
-#define Y_SPEED 3000 //4000 //8000
-#define Y_ACCEL 1000 //1000 //10000
+#define Y_SPEED 2800 //3000 //4000 //8000
+#define Y_ACCEL 800 //1000 //10000
 #define Y_DISTANCE 1555//3075 //6150
 #define Y_PAIR_DISTANCE 1537//3075 //6150
 #define Y_IMPAIR_DISTANCE 1450//2900 //5800
@@ -228,7 +228,9 @@ enum DevState {
     UP_FINISH,
     SECOND_EXPOSURE,
     MANUAL_DOWN,
-    MANUAL_UP
+    MANUAL_UP,
+    PAUSE,
+    UNPAUSE
 };
 
 // Déclaration des variables globales (extern)

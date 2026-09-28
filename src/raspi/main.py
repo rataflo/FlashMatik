@@ -189,7 +189,7 @@ def initCashlessMDB():
     try:
         mdb_manager = cashlessMDB.MDBManager(
             port='/dev/ttyACM0',
-            debug_mode=True,
+            debug_mode=False,
             callback=mdb_callback_handler
         )
         
@@ -297,6 +297,7 @@ def main():
         lastRefreshConfig = currTime
         lastRefresh = currTime
         lastNbPieces = 0
+        lastMdbRetry = 0
         logging.info(f"Démarrage OK")
 
         # Boucle de la mort
@@ -318,24 +319,36 @@ def main():
                 START = True
 
             # Traiter les événements MDB
+            # Traiter les événements MDB
             if CONFIG.cashless_mdb:
                 process_mdb_events()
-
+    
+                if cb_transaction_active and mdb_manager and mdb_manager.initialized:
+                    if mdb_manager.timeout_stalled_transaction(timeout_seconds=300):
+                        cb_transaction_active = False
+                        logging.info("Transaction MDB expirée")
+                    elif mdb_manager.current_transaction is None:
+                        cb_transaction_active = False
+    
                 if not cb_transaction_active:
                     if mdb_manager and mdb_manager.initialized:
+                        time.sleep(2)
                         # Lancer la transaction
                         amount_eur = CONFIG.price / 100
-                        logging.info(f"Lancement transaction CB: {amount_eur}€")
                         success = mdb_manager.start_payment(amount_eur)
                         if success:
-                            cb_transaction_active = True  # Transaction lancée
-                            logging.info("Transaction CB lancée")
+                            cb_transaction_active = True
+                            logging.info(f"Transaction CB lancée: {amount_eur}€")
                         else:
-                            logging.error("Échec lancement transaction")
                             cb_transaction_active = False
                     else:
-                        logging.error("Manager MDB non disponible")
-                        initCashlessMDB()
+                        # Init déjà en cours ? On n'en double pas
+                        if mdb_manager and mdb_manager.starting:
+                            pass
+                        elif currTime - lastMdbRetry >= 10:
+                            lastMdbRetry = currTime
+                            logging.error("Manager MDB non disponible, réinitialisation")
+                            initCashlessMDB()
                         cb_transaction_active = False
 
             if arduino_ser and arduino_ser.in_waiting:          
@@ -347,6 +360,7 @@ def main():
                         safe_arduino_write((REPLY_START + "\n").encode())
 
                 elif line == "DONE":
+                    START = False
                     # La séquence est terminée
                     logging.info("Arduino valide le start")
                     # Valider le paiement CB si nécessaire
@@ -356,7 +370,6 @@ def main():
                         cb_transaction_active = False
                         time.sleep(5)  # Attendre un peu pour s'assurer que la transaction est bien validée
                     # Réinitialiser START et le prix
-                    START = False
                     COINS = CONFIG.price
                 elif line == "ERROR":
                     logging.error("Arduino a signalé une erreur")

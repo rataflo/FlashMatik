@@ -22,7 +22,7 @@ public:
     void steppersTask();
     void openCarrier();
     void closeCarrier();
-    void rotate(bool waitForPaper);
+    bool rotate(bool waitForPaper);
     void rotateExit();
     bool isRotMoving();
     bool isRotEndMove();
