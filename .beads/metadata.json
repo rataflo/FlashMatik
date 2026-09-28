@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "FlashMatik",
+  "project_id": "429c591d-78b7-47c1-8f0a-eb23b63b99f2"
+}
