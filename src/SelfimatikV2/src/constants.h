@@ -186,6 +186,48 @@ struct storage {
   int greenTime = GREEN_TIME; 
   int blueTime = BLUE_TIME;
 
+  // C0: valeurs moteurs/calibration (checkCode v5), remplacent les macros en dur
+  int rotSpeed = ROT_SPEED;
+  int rotAccel = ROT_ACCEL;
+  int rotStepPair = X_ROTATE_PAIR;
+  int rotStepImpair = X_ROTATE_IMPAIR;
+  int manSpeed = 500;
+  int manAccel = 100;
+
+  int ySpeed = Y_SPEED;
+  int yAccel = Y_ACCEL;
+  int initSpeed = INIT_SPEED;
+  int initAccel = INIT_ACCEL;
+  int yDownSpeed = Y_DOWN_SPEED;
+  int yDownAccel = Y_DOWN_ACCEL;
+  int yAgitateSpeed = Y_AGITATE_SPEED;
+  int yAgitateAccel = Y_AGITATE_ACCEL;
+  int yDistance = Y_DISTANCE;
+  int yPairDistance = Y_PAIR_DISTANCE;
+  int yImpairDistance = Y_IMPAIR_DISTANCE;
+  int yExitDistance = Y_EXIT_DISTANCE;
+
+  int shutterSpeed = SHUTTER_SPEED;
+  int shutterAccel = SHUTTER_ACCEL;
+  int shutterStepRev = SHUTTER_STEP_REVOL;
+  int flashTime = 20;
+
+  int paperSpeed = PAPER_SPEED;
+  int paperAccel = PAPER_ACCEL;
+  int paperOutSpeed = PAPER_OUT_SPEED;
+  int paperOutAccel = PAPER_OUT_ACCEL;
+
+  int scissorSpeed = SCISSOR_SPEED;
+  int scissorAccel = SCISSOR_ACCEL;
+  int scissorStepOpened = SCISSOR_STEP_OPENED;
+
+  int servoPosIdle = SERVO_POS_IDLE;
+  int servoPosOpenBegin = SERVO_POS_OPEN_BEGIN;
+  int servoPosOpenEnd = SERVO_POS_OPEN_END;
+  int servoPosCloseBegin = SERVO_POS_CLOSE_BEGIN;
+  int servoPosCloseEnd = SERVO_POS_CLOSE_END;
+  int servoTime = SERVO_TIME;
+
   bool bflashOn = true;
   bool bDefineEachShot = false;
   byte nbExp = 1;
