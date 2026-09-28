@@ -68,8 +68,8 @@ void Dev::init() {
     digitalWrite(ROT_PIN_ENABLE, HIGH);
 
     stepperRot.setCurrentPosition(0);
-    stepperRot.setMaxSpeed(ROT_SPEED);
-    stepperRot.setAcceleration(ROT_ACCEL);
+    stepperRot.setMaxSpeed(parameters.params.rotSpeed);
+    stepperRot.setAcceleration(parameters.params.rotAccel);
     stepperY.setCurrentPosition(0);
     
 
@@ -109,7 +109,7 @@ void Dev::initRot() {
     // Activation du moteur
     digitalWriteFast(ROT_PIN_ENABLE, LOW);
     stepperRot.setCurrentPosition(0);
-    stepperRot.moveTo(X_ROTATE_IMPAIR * 2); // Lance la course
+    stepperRot.moveTo(parameters.params.rotStepImpair * 2); // Lance la course
     
     bool optoFound = digitalReadFast(OPTO_PIN);
     while (!optoFound && stepperRot.distanceToGo() != 0) {
@@ -139,7 +139,7 @@ bool Dev::rotate(bool waitForPaper){
         debug("rotate", String("begin"));
         digitalWrite(ROT_PIN_ENABLE, LOW);
         stepperRot.setCurrentPosition(0);
-        stepperRot.moveTo(bPair ? X_ROTATE_PAIR : X_ROTATE_IMPAIR);
+        stepperRot.moveTo(bPair ? parameters.params.rotStepPair : parameters.params.rotStepImpair);
         bRotMoving = true;
         // check if arm need to be opened or closed.
         if(!bPair){

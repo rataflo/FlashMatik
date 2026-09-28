@@ -97,6 +97,10 @@ MENU(menuPaper, "Paper", doNothing ,noEvent, noStyle
 MENU(menuRotation, "Rotation", doNothing ,noEvent, noStyle
   ,FIELD(parameters.params.nbStepCenterArm,"Stp center","",-5000,5000,1,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.nbStepExit,"Stp exit","",0,5000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.rotStepPair,"Step pair","",100,2000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.rotStepImpair,"Step impair","",100,2000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.rotSpeed,"Speed rot","",50,2000,50,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.rotAccel,"Accel rot","",50,2000,50,0,saveParams ,exitEvent, noStyle)
   ,EXIT("<Back")
 );
 
