@@ -75,6 +75,8 @@ const char* getDevStateName(DevState state) {
         case SECOND_EXPOSURE: return "SECOND_EXPOSURE";
         case MANUAL_DOWN: return "MANUAL_DOWN";
         case MANUAL_UP: return "MANUAL_UP";
+        case PAUSE: return "PAUSE";
+        case UNPAUSE: return "UNPAUSE";
         default: return "UNKNOWN";
     }
 }
@@ -139,7 +141,7 @@ void loop() {
     handlePhotoState();
     handleDevState();
     //manageStepsTakeShot();
-    if(photoState == IDLE_PHOTO && devState == IDLE_DEV){
+    if(photoState == IDLE_PHOTO && (devState == IDLE_DEV || devState == PAUSE)){
         checkMenu();
     }
     //dev.manageDryer();
@@ -169,6 +171,14 @@ void handlePhotoState() {
                             Serial.println("UP_NOT_READY");
                         }
                     }
+                    else if (reply == "UNPAUSE") {
+                        if (devState == PAUSE) {
+                            Serial.println("UNPAUSE");
+                            devState = UNPAUSE;
+                        } else {
+                            Serial.println("UNPAUSE_NOT_READY");
+                        }
+                    }
                     else if (reply == "START") {
                         Serial.println("DONE");
                         photoRequested = true;
@@ -178,6 +188,11 @@ void handlePhotoState() {
                             shutter.setNumFrame(0);
                             photoRequested = false;
                         #endif
+                    }
+                    else if (reply == "PHOTO") {
+                        photoState = COUNTDOWN;
+                        shutter.setNumFrame(0);
+                        photoRequested = false;
                     }
                 }else{
                     Serial.println("QUERY");
@@ -335,7 +350,9 @@ void handlePhotoState() {
 void handleDevState() {
 
     if(devState != olDevState){
-        Serial.println(getDevStateName(devState));
+        if(devState != AGITATE_UP && devState != AGITATE_DOWN && devState != PAUSE){
+            Serial.println(getDevStateName(devState));
+        }
         olDevState = devState;
     }
     
@@ -347,8 +364,11 @@ void handleDevState() {
             }
             break;
         case ROTATE:
-            if(!dev.isRotEndMove()){ 
-                dev.rotate(photoState == WAIT_DEV);
+            if(!dev.isRotEndMove()){
+                if(!dev.rotate(photoState == WAIT_DEV)){
+                    shutter.showError();
+                    devState = PAUSE;
+                }
             }else{
                 dev.resetMove();
                 if(dev.isPair() && photoState == WAIT_DEV){
@@ -409,7 +429,7 @@ void handleDevState() {
         case UP:
             if(!dev.isYEndMove()){
                 digitalWriteFast(SECOND_EXPOSURE_PIN, LOW);
-                dev.up(false, dev.exitNeeded() ? Y_IMPAIR_DISTANCE : Y_DISTANCE, false);
+                dev.up(false, dev.exitNeeded() ? Y_PAIR_DISTANCE : Y_DISTANCE + 20, false);
             }else{
                 dev.resetMove();
                 
@@ -443,7 +463,7 @@ void handleDevState() {
 
         case UP_FINISH:
             if(!dev.isYEndMove()){
-                dev.up(false, Y_EXIT_DISTANCE);
+                dev.up(false, Y_EXIT_DISTANCE + 20);
             }else{
                 dev.resetMove();
                 devState = IDLE_DEV;
@@ -476,7 +496,7 @@ void handleDevState() {
 
         case UP_EXIT:
             if(!dev.isYEndMove()){
-                dev.up(true, Y_EXIT_DISTANCE+20);
+                dev.up(true, Y_EXIT_DISTANCE + 5);
             }else{
                 dev.resetMove();
                 devState = WAIT_EXIT;
@@ -509,10 +529,28 @@ void handleDevState() {
 
         case MANUAL_UP:
             if(!dev.isYEndMove()){
-                dev.up(false, Y_DISTANCE, true);
+                dev.up(false, Y_PAIR_DISTANCE + 50, true);
             }else{
                 dev.resetMove();
                 devState = IDLE_DEV; 
+            }
+            break;
+        case PAUSE:
+            digitalWriteFast(ROT_PIN_ENABLE, HIGH);
+            break;
+    
+        case UNPAUSE:
+            dev.resetMove();
+            digitalWriteFast(ROT_PIN_ENABLE, HIGH);
+            if(dev.isPair() && photoState == WAIT_DEV){
+                devState = WAIT_PAPER;
+            }else{
+                // check si on dois continuer ou pas
+                if(dev.isDevFinished()){
+                    devState = DOWN_FINISH;
+                }else{
+                    devState = DOWN;
+                }
             }
             break;
     }

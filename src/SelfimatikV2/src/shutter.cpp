@@ -254,15 +254,3 @@ void Shutter::resetMove() {
     bEndMove = false;
     bMoving = false;
 }
-
-void Shutter::emergencyShutdown(byte errorCode){
-    Serial.println("ERROR " + String(errorCode));
-    // turn off all motors and servos
-    digitalWrite(ROT_PIN_ENABLE, HIGH);
-    digitalWrite(Y_PIN_ENABLE, HIGH);
-    digitalWrite(Y_BRAKE_PIN, LOW);
-    showError();
-    while(1){
-        // infinite loop to stop the program
-    }
-}

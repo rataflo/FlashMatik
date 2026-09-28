@@ -116,9 +116,7 @@ void Dev::initRot() {
         stepperRot.run();
         optoFound = digitalReadFast(OPTO_PIN);
     }
-    if(!optoFound){
-        shutter.emergencyShutdown(1);
-    }
+    Serial.println("optoFound: " + String(optoFound));
     stepperRot.stop();
     stepperRot.run();
     stepperRot.setCurrentPosition(0);
@@ -136,7 +134,7 @@ void Dev::initRot() {
 
 
 
-void Dev::rotate(bool waitForPaper){
+bool Dev::rotate(bool waitForPaper){
     if(!bRotMoving){
         debug("rotate", String("begin"));
         digitalWrite(ROT_PIN_ENABLE, LOW);
@@ -175,13 +173,20 @@ void Dev::rotate(bool waitForPaper){
             stepperRot.run();
         }
     }else{
+        bool bShutdown = false;
         if(!bPair && !optoFound){
-            shutter.emergencyShutdown(1);
+            Serial.println("rot pos: " + String(stepperRot.currentPosition()));
+            bShutdown = true;
         }
         digitalWrite(ROT_PIN_ENABLE, HIGH);
         stepperRot.setCurrentPosition(0);
         bPair = !bPair;
         for(int i = 0; i < 6; i++){
+            if(bShutdown){
+                Serial.print(carriers[i].tankPos);
+                Serial.print(" ");
+                Serial.println(carriers[i].bOpen);
+            }
             carriers[i].tankPos = carriers[i].tankPos + 1 > 11 ? 0 : carriers[i].tankPos + 1;
         }
 
@@ -201,7 +206,14 @@ void Dev::rotate(bool waitForPaper){
         bRotMoving = false;
         bRotEndMove = true;
         optoFound = false;
+
+        if(bShutdown){
+            Serial.print("OPTO NOT FOUND, PAUSE");
+            Serial.print("waitForPaper: " + String(waitForPaper));
+            return false;
+        }
     }
+    return true;
 }
 
 void Dev::rotateExit(){
@@ -218,7 +230,7 @@ void Dev::rotateExit(){
         stepperRot.run();
     }else{
         stepperRot.setCurrentPosition(0);
-        digitalWrite(ROT_PIN_ENABLE, HIGH);
+        //digitalWrite(ROT_PIN_ENABLE, HIGH);
         bRotMoving = false;
         bRotEndMove = true;
     }
@@ -282,8 +294,10 @@ void Dev::up(bool bActivateExit, long nbSteps, bool bManual) {
     }
 
     if (!digitalReadFast(Y_ENDSTOP_PIN) || stepperY.distanceToGo() == 0) {
-        stepperY.stop();
-        stepperY.run();
+        //stepperY.stop();
+        //stepperY.run();
+        debug("up", String("currPos: ") + stepperY.currentPosition());
+        debug("up", !digitalReadFast(Y_ENDSTOP_PIN) ? String("end") : String("end but not endstop"));
         stepperY.setCurrentPosition(0);
         if(bActivateExit){
             digitalWriteFast(EXIT_PIN, LOW);
@@ -291,7 +305,7 @@ void Dev::up(bool bActivateExit, long nbSteps, bool bManual) {
         disableY();
         bYMoving = false;
         bYEndMove = true;
-        debug("up", String("end"));
+        
     }else if(stepperY.distanceToGo() != 0){
         stepperY.run();
     }
@@ -380,7 +394,7 @@ void Dev::enableY() {
 void Dev::disableY() {
     digitalWrite(Y_BRAKE_PIN, LOW);
     digitalWrite(Y_PIN_ENABLE, HIGH);
-    digitalWrite(ROT_PIN_ENABLE, HIGH);
+    //digitalWrite(ROT_PIN_ENABLE, HIGH);
 }
 
 bool Dev::isRotMoving(){
@@ -451,10 +465,10 @@ bool Dev::servoFinished(){
     if(servoStart != 0 && currentMillis - servoStart > SERVO_TIME){
         servoStart = 0;
         servoArm.detach();
-        digitalWrite(ROT_PIN_ENABLE, HIGH);
+        //digitalWrite(ROT_PIN_ENABLE, HIGH);
         return true;
     } else if(servoStart == 0){
-        digitalWrite(ROT_PIN_ENABLE, HIGH);
+        //digitalWrite(ROT_PIN_ENABLE, HIGH);
         return true;
     }
     return false;

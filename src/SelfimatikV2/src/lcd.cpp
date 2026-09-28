@@ -55,6 +55,16 @@ result manualDownAction(eventMask e, prompt &item) {
     return proceed;
 }
 
+result manualDevAction(eventMask e, prompt &item) {
+    if (e == enterEvent) {
+        if (devState == PAUSE) {
+            Serial.println("MANUAL_DEV from LCD");
+            devState = UNPAUSE;
+        }
+    }
+    return proceed;
+}
+
 MENU(menuData,"Data",showEvent,anyEvent,noStyle
   ,FIELD(parameters.params.totStrip,"Total"," ",0,0,0,0, doNothing ,noEvent, noStyle)
   ,FIELD(parameters.params.userCount1,"Counter 1","",0,0,0,0, doNothing ,noEvent, noStyle)
@@ -85,7 +95,7 @@ MENU(menuPaper, "Paper", doNothing ,noEvent, noStyle
 );
 
 MENU(menuRotation, "Rotation", doNothing ,noEvent, noStyle
-  ,FIELD(parameters.params.nbStepCenterArm,"Stp center","",0,5000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.nbStepCenterArm,"Stp center","",-5000,5000,1,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.nbStepExit,"Stp exit","",0,5000,1,0,saveParams ,exitEvent, noStyle)
   ,EXIT("<Back")
 );
@@ -230,6 +240,7 @@ MENU(menuShot,"Shot",showEvent,anyEvent,noStyle
 MENU(menuManual, "Manual Control", doNothing, noEvent, noStyle
     ,OP("Move UP", manualUpAction, enterEvent)
     ,OP("Move DOWN", manualDownAction, enterEvent)
+    ,OP("/!\ Unpause DEV", manualDevAction, enterEvent)
     ,EXIT("<Back")
 );
 

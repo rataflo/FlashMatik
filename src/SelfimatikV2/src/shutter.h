@@ -33,7 +33,6 @@ public:
 
     bool isEndMove();
     void resetMove();
-    void emergencyShutdown(byte errorCode);
 
 private:
     TMC2208Stepper tmc;
