@@ -91,6 +91,10 @@ MENU(menuPaper, "Paper", doNothing ,noEvent, noStyle
   ,FIELD(parameters.params.nbStepPaperCut,"Paper cut","",0,6000,1,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.nbStepPaperOut,"Paper out","",0,6000,1,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.deltaFirstShot,"Delta first","",0,1000,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.paperSpeed,"Speed feed","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.paperAccel,"Accel feed","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.paperOutSpeed,"Speed out","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.paperOutAccel,"Accel out","",100,5000,100,0,saveParams ,exitEvent, noStyle)
   ,EXIT("<Back")
 );
 

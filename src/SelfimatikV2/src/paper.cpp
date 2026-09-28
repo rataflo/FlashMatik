@@ -66,8 +66,8 @@ void PaperHandler::init() {
     tmc.hstrt(3);               // Hysteresis start (0-7)
 
     stepper.setCurrentPosition(0);
-    stepper.setMaxSpeed(PAPER_SPEED);
-    stepper.setAcceleration(PAPER_ACCEL);
+    stepper.setMaxSpeed(parameters.params.paperSpeed);
+    stepper.setAcceleration(parameters.params.paperAccel);
     stepper.moveTo(1200);
 
     while (!digitalReadFast(PAPER_SWITCH1_PIN) && stepper.distanceToGo() != 0) {
@@ -103,8 +103,8 @@ void PaperHandler::movePaperNextShot() {
         debug("movePaperNextShot", String("begin"));
         digitalWrite(PAPER_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.setMaxSpeed(PAPER_OUT_SPEED);
-        stepper.setAcceleration(PAPER_OUT_ACCEL);
+        stepper.setMaxSpeed(parameters.params.paperOutSpeed);
+        stepper.setAcceleration(parameters.params.paperOutAccel);
         stepper.moveTo(parameters.params.nbStepOneShot);
         bMoving = true;
     }
@@ -134,8 +134,8 @@ void PaperHandler::movePaperOut() {
         debug("movePaperOut", String("begin"));
         digitalWrite(PAPER_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.setMaxSpeed(PAPER_OUT_SPEED);
-        stepper.setAcceleration(PAPER_OUT_ACCEL);
+        stepper.setMaxSpeed(parameters.params.paperOutSpeed);
+        stepper.setAcceleration(parameters.params.paperOutAccel);
         stepper.moveTo(parameters.params.nbStepPaperOut);
         bMoving = true;
     }
@@ -154,8 +154,8 @@ void PaperHandler::movePaperCutPos() {
         debug("movePaperCutPos", String("begin"));
         digitalWrite(PAPER_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.setMaxSpeed(PAPER_OUT_SPEED);
-        stepper.setAcceleration(PAPER_OUT_ACCEL);
+        stepper.setMaxSpeed(parameters.params.paperOutSpeed);
+        stepper.setAcceleration(parameters.params.paperOutAccel);
         stepper.moveTo(parameters.params.nbStepPaperCut);
         bMoving = true;
     }
