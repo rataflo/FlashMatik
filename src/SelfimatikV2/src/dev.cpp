@@ -22,7 +22,7 @@ void Dev::init() {
     pinMode(DRYER_PIN, OUTPUT);
     pinMode(EXIT_PIN, OUTPUT);
     servoArm.attach(SERVO_PIN);
-    servoArm.write(SERVO_POS_IDLE);
+    servoArm.write(parameters.params.servoPosIdle);
 
     pinModeFast(OPTO_PIN, INPUT);
 
@@ -147,10 +147,10 @@ bool Dev::rotate(bool waitForPaper){
                 if(carriers[i].tankPos == 13){ // position sortie (14 tanks)
                     if(!waitForPaper && carriers[i].bOpen == 1){
                         servoArm.attach(SERVO_PIN);
-                        servoArm.write(SERVO_POS_CLOSE_BEGIN);
+                        servoArm.write(parameters.params.servoPosCloseBegin);
                     } else if(waitForPaper && carriers[i].bOpen == 0){
                         servoArm.attach(SERVO_PIN);
-                        servoArm.write(SERVO_POS_OPEN_BEGIN);
+                        servoArm.write(parameters.params.servoPosOpenBegin);
                     }
                 }
             }
@@ -260,7 +260,7 @@ void Dev::down(long nbSteps, bool bManual) {
         // put servo in idle pos when Y is in the middle
         if(stepperY.distanceToGo() == nbSteps / 2){
             servoArm.attach(SERVO_PIN);
-            servoArm.write(SERVO_POS_IDLE);
+            servoArm.write(parameters.params.servoPosIdle);
         }
     } else {
         stepperY.setCurrentPosition(0);
@@ -347,7 +347,7 @@ void Dev::openCarrier(){
     digitalWrite(ROT_PIN_ENABLE, LOW);
     servoStart = millis();
     servoArm.attach(SERVO_PIN);
-    servoArm.write(SERVO_POS_OPEN_END);
+    servoArm.write(parameters.params.servoPosOpenEnd);
      for(int i = 0; i < 7; i++){
         if(carriers[i].tankPos == 0){
             carriers[i].bOpen = 1;
@@ -360,7 +360,7 @@ void Dev::closeCarrier(){
     digitalWrite(ROT_PIN_ENABLE, LOW);
     servoStart = millis();
     servoArm.attach(SERVO_PIN);
-    servoArm.write(SERVO_POS_CLOSE_END);
+    servoArm.write(parameters.params.servoPosCloseEnd);
      for(int i = 0; i < 7; i++){
         if(carriers[i].tankPos == 0){
             carriers[i].bOpen = 0;
@@ -463,7 +463,7 @@ bool Dev::secondExposureNeeded(){
 
 bool Dev::servoFinished(){
     unsigned long currentMillis = millis();
-    if(servoStart != 0 && currentMillis - servoStart > SERVO_TIME){
+    if(servoStart != 0 && currentMillis - servoStart > parameters.params.servoTime){
         servoStart = 0;
         servoArm.detach();
         //digitalWrite(ROT_PIN_ENABLE, HIGH);

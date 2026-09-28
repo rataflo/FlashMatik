@@ -298,7 +298,7 @@ void handlePhotoState() {
             break;
         
         case PREFLASH_START:
-            if(RED_TIME > 0){
+            if(parameters.params.redTime > 0){
                 preFlashStartTime = millis();
                 preflashStrip.setPixelColor(1, 8, 0, 0); // Red
                 preflashStrip.setPixelColor(4, 8, 0, 0);
@@ -307,10 +307,10 @@ void handlePhotoState() {
             photoState = RED;
             break;
         case RED:
-            if(RED_TIME == 0 || millis() - preFlashStartTime > RED_TIME){  
+            if(parameters.params.redTime == 0 || millis() - preFlashStartTime > parameters.params.redTime){  
                 preflashStrip.setPixelColor(1, 0, 0, 0);
                 preflashStrip.setPixelColor(4, 0, 0, 0);
-                if(GREEN_TIME > 0){
+                if(parameters.params.greenTime > 0){
                     preFlashStartTime = millis();
                     preflashStrip.setPixelColor(1, 0, 4, 0); // Green
                     preflashStrip.setPixelColor(4, 0, 4, 0); // Green
@@ -321,10 +321,10 @@ void handlePhotoState() {
             }
             break;
         case GREEN:
-            if (GREEN_TIME == 0 || millis() - preFlashStartTime > GREEN_TIME) { 
+            if (parameters.params.greenTime == 0 || millis() - preFlashStartTime > parameters.params.greenTime) { 
                 preflashStrip.setPixelColor(1, 0, 0, 0);
                 preflashStrip.setPixelColor(4, 0, 0, 0);
-                if(BLUE_TIME > 0){
+                if(parameters.params.blueTime > 0){
                     preFlashStartTime = millis();
                     preflashStrip.setPixelColor(1, 0, 0, 2); // bleu
                     preflashStrip.setPixelColor(4, 0, 0, 2); // bleu
@@ -334,7 +334,7 @@ void handlePhotoState() {
             }
             break;
         case BLUE:
-            if (BLUE_TIME == 0 || millis() - preFlashStartTime > BLUE_TIME) {
+            if (parameters.params.blueTime == 0 || millis() - preFlashStartTime > parameters.params.blueTime) {
                 preflashStrip.setPixelColor(1, 0, 0, 0); 
                 preflashStrip.setPixelColor(4, 0, 0, 0); // All LEDs red
                 preflashStrip.clear();

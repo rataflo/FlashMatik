@@ -129,6 +129,17 @@ MENU(menuY, "Y axis", doNothing ,noEvent, noStyle
 );
 
 
+MENU(menuServo, "Servo", doNothing ,noEvent, noStyle
+  ,FIELD(parameters.params.servoPosIdle,"Pos idle","deg",0,180,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.servoPosOpenBegin,"Open begin","deg",0,180,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.servoPosOpenEnd,"Open end","deg",0,180,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.servoPosCloseBegin,"Close begin","deg",0,180,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.servoPosCloseEnd,"Close end","deg",0,180,1,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.servoTime,"Time ms","ms",0,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,EXIT("<Back")
+);
+
+
 MENU(menuScissor, "Scissor", doNothing ,noEvent, noStyle
   ,FIELD(parameters.params.scissorSpeed,"Speed","",1000,20000,100,0,saveParams ,exitEvent, noStyle)
   ,FIELD(parameters.params.scissorAccel,"Accel","",1000,20000,100,0,saveParams ,exitEvent, noStyle)
@@ -152,6 +163,7 @@ MENU(menuSetup,"Setup",showEvent,anyEvent,noStyle
   ,SUBMENU(menuY)
   ,SUBMENU(menuShutter)
   ,SUBMENU(menuScissor)
+  ,SUBMENU(menuServo)
   ,EXIT("<Back")
 );
 
