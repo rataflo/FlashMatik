@@ -11,7 +11,7 @@ Dev::Dev()
     agitateStart = 0;
     servoStart = 0;
     dripStart = 0;
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 7; i++) {
         carriers[i].bOpen = false;
         carriers[i].tankPos = i * 2;
     }
@@ -143,8 +143,8 @@ bool Dev::rotate(bool waitForPaper){
         bRotMoving = true;
         // check if arm need to be opened or closed.
         if(!bPair){
-            for(int i = 0; i < 6; i++){
-                if(carriers[i].tankPos == 11){
+            for(int i = 0; i < 7; i++){
+                if(carriers[i].tankPos == 13){ // position sortie (14 tanks)
                     if(!waitForPaper && carriers[i].bOpen == 1){
                         servoArm.attach(SERVO_PIN);
                         servoArm.write(SERVO_POS_CLOSE_BEGIN);
@@ -181,18 +181,18 @@ bool Dev::rotate(bool waitForPaper){
         digitalWrite(ROT_PIN_ENABLE, HIGH);
         stepperRot.setCurrentPosition(0);
         bPair = !bPair;
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < 7; i++){
             if(bShutdown){
                 Serial.print(carriers[i].tankPos);
                 Serial.print(" ");
                 Serial.println(carriers[i].bOpen);
             }
-            carriers[i].tankPos = carriers[i].tankPos + 1 > 11 ? 0 : carriers[i].tankPos + 1;
+            carriers[i].tankPos = carriers[i].tankPos + 1 > 13 ? 0 : carriers[i].tankPos + 1; // 14 positions
         }
 
         // close or open arm
         if(bPair){
-            for(int i = 0; i < 6; i++){
+            for(int i = 0; i < 7; i++){
                 if(carriers[i].tankPos == 0){
                     if(!waitForPaper && carriers[i].bOpen == 1){
                         closeCarrier();
@@ -348,7 +348,7 @@ void Dev::openCarrier(){
     servoStart = millis();
     servoArm.attach(SERVO_PIN);
     servoArm.write(SERVO_POS_OPEN_END);
-     for(int i = 0; i < 6; i++){
+     for(int i = 0; i < 7; i++){
         if(carriers[i].tankPos == 0){
             carriers[i].bOpen = 1;
         }
@@ -361,7 +361,7 @@ void Dev::closeCarrier(){
     servoStart = millis();
     servoArm.attach(SERVO_PIN);
     servoArm.write(SERVO_POS_CLOSE_END);
-     for(int i = 0; i < 6; i++){
+     for(int i = 0; i < 7; i++){
         if(carriers[i].tankPos == 0){
             carriers[i].bOpen = 0;
         }
@@ -377,7 +377,7 @@ void Dev::manageDryer() {
 }
 
 void Dev::paperDelivered(){
-    for(int i = 0; i < 6; i++){
+    for(int i = 0; i < 7; i++){
         if(carriers[i].tankPos == 0){
             carriers[i].bOpen = 1;
         }
@@ -433,7 +433,7 @@ bool Dev::isPair(){
 }
 
 bool Dev::isDevFinished(){
-    for(int i = 0; i < 6; i++){
+    for(int i = 0; i < 7; i++){
         if(carriers[i].bOpen == 1){
             return false;
         }
@@ -441,9 +441,10 @@ bool Dev::isDevFinished(){
     return true;
 }
 
+// RA-4 14 bacs: [0-1]devNB [2-4]eau [5]eau+2e expo [6-7]devCouleur [8]eau [9-10]blix [11-13]eau
 bool Dev::exitNeeded(){
-    for(int i = 0; i < 6; i++){
-        if(carriers[i].tankPos == 11 && carriers[i].bOpen == 1){
+    for(int i = 0; i < 7; i++){
+        if(carriers[i].tankPos == 13 && carriers[i].bOpen == 1){ // bac 14 = sortie
             return true;
         }
     }
@@ -451,8 +452,8 @@ bool Dev::exitNeeded(){
 }
 
 bool Dev::secondExposureNeeded(){
-    for(int i = 0; i < 6; i++){
-        if(carriers[i].tankPos == 2 && carriers[i].bOpen == 1){
+    for(int i = 0; i < 7; i++){
+        if(carriers[i].tankPos == 5 && carriers[i].bOpen == 1){ // bac 6 = eau + 2e exposition
             return true;
         }
     }

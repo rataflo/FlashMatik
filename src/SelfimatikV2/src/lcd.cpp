@@ -76,8 +76,8 @@ MENU(menuData,"Data",showEvent,anyEvent,noStyle
 
 
 MENU(menuTimes, "Times", doNothing ,noEvent, noStyle
-  ,FIELD(parameters.params.tankPair,"Tank 1/3/5/..","s",1,480,1,0,saveParams ,exitEvent , noStyle)
-  ,FIELD(parameters.params.tankImpair,"Tank 2/4/6..","s",1,480,1,0,saveParams ,exitEvent , noStyle)
+  ,FIELD(parameters.params.tankPair,"Tank 1/3/5/../13","s",1,480,1,0,saveParams ,exitEvent , noStyle)
+  ,FIELD(parameters.params.tankImpair,"Tank 2/4/../14","s",1,480,1,0,saveParams ,exitEvent , noStyle)
   ,FIELD(parameters.params.driptTime,"Drip time","s",5,480,1,0,saveParams ,exitEvent , noStyle)
   ,FIELD(parameters.params.redTime,"Red time","ms",0,1000,1,0,saveParams ,exitEvent , noStyle)
   ,FIELD(parameters.params.greenTime,"Green time","ms",0,1000,1,0,saveParams ,exitEvent , noStyle)
