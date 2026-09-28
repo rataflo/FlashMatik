@@ -386,7 +386,7 @@ void handleDevState() {
         case DOWN:
             if(dev.servoFinished()){
                 if(!dev.isYEndMove()){
-                    dev.down(dev.isPair() ? -Y_PAIR_DISTANCE : -Y_IMPAIR_DISTANCE, false);
+                    dev.down(dev.isPair() ? -parameters.params.yPairDistance : -parameters.params.yImpairDistance, false);
                 }else{
                     // if paper in tank 2 switch on light for second exposure.
                     if(dev.secondExposureNeeded()){
@@ -429,7 +429,7 @@ void handleDevState() {
         case UP:
             if(!dev.isYEndMove()){
                 digitalWriteFast(SECOND_EXPOSURE_PIN, LOW);
-                dev.up(false, dev.exitNeeded() ? Y_PAIR_DISTANCE : Y_DISTANCE + 20, false);
+                dev.up(false, dev.exitNeeded() ? parameters.params.yPairDistance : parameters.params.yDistance + 20, false);
             }else{
                 dev.resetMove();
                 
@@ -453,7 +453,7 @@ void handleDevState() {
         case DOWN_FINISH:
             if(dev.servoFinished()){
                 if(!dev.isYEndMove()){
-                    dev.down(-Y_EXIT_DISTANCE);
+                    dev.down(-parameters.params.yExitDistance);
                 }else{
                     dev.resetMove();
                     devState = UP_FINISH;
@@ -463,7 +463,7 @@ void handleDevState() {
 
         case UP_FINISH:
             if(!dev.isYEndMove()){
-                dev.up(false, Y_EXIT_DISTANCE + 20);
+                dev.up(false, parameters.params.yExitDistance + 20);
             }else{
                 dev.resetMove();
                 devState = IDLE_DEV;
@@ -472,7 +472,7 @@ void handleDevState() {
 
         case DOWN_ROT:
             if(!dev.isYEndMove()){
-                dev.down(-Y_EXIT_DISTANCE);
+                dev.down(-parameters.params.yExitDistance);
             }else{
                 dev.resetMove();
                 //check if paper in carrier at pos 9 so exit.
@@ -496,7 +496,7 @@ void handleDevState() {
 
         case UP_EXIT:
             if(!dev.isYEndMove()){
-                dev.up(true, Y_EXIT_DISTANCE + 5);
+                dev.up(true, parameters.params.yExitDistance + 5);
             }else{
                 dev.resetMove();
                 devState = WAIT_EXIT;
@@ -520,7 +520,7 @@ void handleDevState() {
             break;
         case MANUAL_DOWN:
             if(!dev.isYEndMove()){
-                dev.down( -Y_PAIR_DISTANCE, true);
+                dev.down( -parameters.params.yPairDistance, true);
             }else{
                 dev.resetMove();
                 devState = IDLE_DEV;
@@ -529,7 +529,7 @@ void handleDevState() {
 
         case MANUAL_UP:
             if(!dev.isYEndMove()){
-                dev.up(false, Y_PAIR_DISTANCE + 50, true);
+                dev.up(false, parameters.params.yPairDistance + 50, true);
             }else{
                 dev.resetMove();
                 devState = IDLE_DEV; 

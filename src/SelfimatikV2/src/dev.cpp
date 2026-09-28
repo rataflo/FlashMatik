@@ -86,9 +86,9 @@ void Dev::initY() {
     debug("initY", String("debut"));
     enableY();
     stepperY.setCurrentPosition(0);
-    stepperY.setMaxSpeed(INIT_SPEED);
-    stepperY.setAcceleration(INIT_ACCEL);
-    stepperY.moveTo(Y_DISTANCE+50);
+    stepperY.setMaxSpeed(parameters.params.initSpeed);
+    stepperY.setAcceleration(parameters.params.initAccel);
+    stepperY.moveTo(parameters.params.yDistance+50);
 
     while (digitalReadFast(Y_ENDSTOP_PIN)) {
         stepperY.run();
@@ -97,8 +97,8 @@ void Dev::initY() {
     stepperY.run();
     //Serial.println(stepperY.currentPosition());
     stepperY.setCurrentPosition(0);
-    stepperY.setMaxSpeed(Y_SPEED);
-    stepperY.setAcceleration(Y_ACCEL);
+    stepperY.setMaxSpeed(parameters.params.ySpeed);
+    stepperY.setAcceleration(parameters.params.yAccel);
     disableY();
     resetMove();
 }
@@ -245,11 +245,11 @@ void Dev::down(long nbSteps, bool bManual) {
         enableY();
         stepperY.setCurrentPosition(0);
         if(bManual){
-            stepperY.setMaxSpeed(500);
-            stepperY.setAcceleration(100);
+            stepperY.setMaxSpeed(parameters.params.manSpeed);
+            stepperY.setAcceleration(parameters.params.manAccel);
         }else{
-            stepperY.setMaxSpeed(Y_DOWN_SPEED);
-            stepperY.setAcceleration(Y_DOWN_ACCEL);
+            stepperY.setMaxSpeed(parameters.params.yDownSpeed);
+            stepperY.setAcceleration(parameters.params.yDownAccel);
         }
         stepperY.moveTo(nbSteps);
         //stepperY.setSpeed(-Y_SPEED);
@@ -279,11 +279,11 @@ void Dev::up(bool bActivateExit, long nbSteps, bool bManual) {
         enableY();
         stepperY.setCurrentPosition(0);
         if(bManual){
-            stepperY.setMaxSpeed(500);
-            stepperY.setAcceleration(100);
+            stepperY.setMaxSpeed(parameters.params.manSpeed);
+            stepperY.setAcceleration(parameters.params.manAccel);
         }else{
-            stepperY.setMaxSpeed(Y_SPEED);
-            stepperY.setAcceleration(Y_ACCEL);
+            stepperY.setMaxSpeed(parameters.params.ySpeed);
+            stepperY.setAcceleration(parameters.params.yAccel);
         }
         stepperY.moveTo(nbSteps);
         bYMoving = true;
@@ -317,12 +317,12 @@ void Dev::agitate(bool bUp) {
         //debug("agitate", String("begin"));
         //enableY();
         stepperY.setCurrentPosition(0);
-        stepperY.setMaxSpeed(Y_AGITATE_SPEED);
-        stepperY.setAcceleration(Y_AGITATE_ACCEL);
+        stepperY.setMaxSpeed(parameters.params.yAgitateSpeed);
+        stepperY.setAcceleration(parameters.params.yAgitateAccel);
         if(bUp){
-            stepperY.moveTo(Y_AGITATE_STEPS);
+            stepperY.moveTo(parameters.params.agitateSteps);
         }else{
-            stepperY.moveTo(-Y_AGITATE_STEPS);
+            stepperY.moveTo(-parameters.params.agitateSteps);
         }
         bYMoving = true;
     }

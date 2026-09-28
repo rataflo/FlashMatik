@@ -105,9 +105,30 @@ MENU(menuRotation, "Rotation", doNothing ,noEvent, noStyle
 );
 
 
+MENU(menuY, "Y axis", doNothing ,noEvent, noStyle
+  ,FIELD(parameters.params.ySpeed,"Speed Y","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yAccel,"Accel Y","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yDownSpeed,"Speed down","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yDownAccel,"Accel down","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yAgitateSpeed,"Agit speed","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yAgitateAccel,"Agit accel","",100,10000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.agitateSteps,"Agit steps","",10,1000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yDistance,"Dist Y","",0,10000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yPairDistance,"Dist pair","",0,10000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yImpairDistance,"Dist impair","",0,10000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.yExitDistance,"Dist exit","",0,1000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.initSpeed,"Speed init","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.initAccel,"Accel init","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.manSpeed,"Manual speed","",10,1000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.manAccel,"Manual accel","",10,1000,10,0,saveParams ,exitEvent, noStyle)
+  ,EXIT("<Back")
+);
+
+
 MENU(menuSetup,"Setup",showEvent,anyEvent,noStyle
   ,SUBMENU(menuPaper)
   ,SUBMENU(menuRotation)
+  ,SUBMENU(menuY)
   ,EXIT("<Back")
 );
 
