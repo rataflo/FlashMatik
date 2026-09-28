@@ -98,6 +98,8 @@
 #define ROT_SPEED 300
 #define ROT_ACCEL 300
 #define ROT_HALL_VALUE 530
+// TODO 7 bras: recalibrer au banc - 14 positions = 360/14 = 25.7 degres (vs 30 degres sur 12).
+// Ces valeurs sont celles du spider 6 bras, a mesurer avec le menu Setup > Rotation.
 #define X_ROTATE_PAIR 300
 #define X_ROTATE_IMPAIR 340 //420
 

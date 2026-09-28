@@ -46,7 +46,7 @@ public:
         bool bOpen;
         byte tankPos;    // Actual (0-11)
     };
-    carrier carriers[6];
+    carrier carriers[7]; // 7 bras / 14 tanks (RA-4)
 private:
     void initRot();
     void initY();
