@@ -55,7 +55,6 @@
 
 #define FLASH_PIN 45
 #define START_BTN_PIN 19
-#define HALL_PIN A4
 #define OPTO_PIN 6
 
 #define SERVO_PIN 11
@@ -84,10 +83,6 @@
 
 #define DRYER_PIN 12
 
-#define SERVO_POS1 20
-#define SERVO_POS2 147
-#define SERVO_POS3 90
-
 #define SERVO_POS_IDLE 10
 #define SERVO_POS_OPEN_BEGIN 10
 #define SERVO_POS_OPEN_END 125
@@ -97,7 +92,6 @@
 
 #define ROT_SPEED 300
 #define ROT_ACCEL 300
-#define ROT_HALL_VALUE 530
 // TODO 7 bras: recalibrer au banc - 14 positions = 360/14 = 25.7 degres (vs 30 degres sur 12).
 // Ces valeurs sont celles du spider 6 bras, a mesurer avec le menu Setup > Rotation.
 #define X_ROTATE_PAIR 300
@@ -134,12 +128,10 @@
 #define PAPER_OUT_SPEED 1000
 #define PAPER_OUT_ACCEL 1500
 #define DELTA_FIRST_SHOT 960 //Delta in step to do after paper reach opto 1. Previous: -80
-#define NB_STEP_CENTERING 0 //Delta in step to do for centering the paper carrier to the feed down.
 
 #define INIT_SPEED 1000 //4000
 #define INIT_ACCEL 400 //5000
 
-#define WAIT_BETWEEN_SHOT 5000 // Wait between shot in ms.
 #define DRYER_TIME 10000
 
 #define TANK_TIME 25 //250000 // Default time in ms in tank.
@@ -149,12 +141,10 @@
 #define NB_STEP_ROT_EXIT 20
 #define NB_STEP_CENTER_ARM 25
 
-//Pre flash times
+//Pre flash times (valeurs par defaut, reglables EEPROM)
 #define RED_TIME 100
 #define GREEN_TIME 25
 #define BLUE_TIME 12
-
-const int expTimes[3]={6000,2000,700};
 
 // EEPROM data & work variables
 #define EEPROM_ADRESS 0
