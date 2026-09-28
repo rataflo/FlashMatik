@@ -5,3 +5,7 @@
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+
+# Runtime logs (Pi)
+src/raspi/log.txt
+src/raspi/crontab.log
