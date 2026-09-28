@@ -125,10 +125,20 @@ MENU(menuY, "Y axis", doNothing ,noEvent, noStyle
 );
 
 
+MENU(menuShutter, "Shutter", doNothing ,noEvent, noStyle
+  ,FIELD(parameters.params.shutterSpeed,"Speed","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.shutterAccel,"Accel","",100,5000,100,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.shutterStepRev,"Step rev","",100,1000,10,0,saveParams ,exitEvent, noStyle)
+  ,FIELD(parameters.params.flashTime,"Flash ms","",1,200,1,0,saveParams ,exitEvent, noStyle)
+  ,EXIT("<Back")
+);
+
+
 MENU(menuSetup,"Setup",showEvent,anyEvent,noStyle
   ,SUBMENU(menuPaper)
   ,SUBMENU(menuRotation)
   ,SUBMENU(menuY)
+  ,SUBMENU(menuShutter)
   ,EXIT("<Back")
 );
 

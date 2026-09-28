@@ -63,8 +63,8 @@ void Shutter::init() {
     
 
     digitalWrite(SHUTTER_PIN_ENABLE, LOW);
-    stepper.setMaxSpeed(SHUTTER_SPEED);
-    stepper.setAcceleration(SHUTTER_ACCEL);
+    stepper.setMaxSpeed(parameters.params.shutterSpeed);
+    stepper.setAcceleration(parameters.params.shutterAccel);
 
     delay(100);
     tmc.begin();
@@ -96,12 +96,12 @@ void Shutter::init() {
 void Shutter::test() {
     debug("takeShot", String("begin"));
     digitalWrite(SHUTTER_PIN_ENABLE, LOW);
-    stepper.setMaxSpeed(SHUTTER_SPEED);
-    stepper.setAcceleration(SHUTTER_ACCEL);
+    stepper.setMaxSpeed(parameters.params.shutterSpeed);
+    stepper.setAcceleration(parameters.params.shutterAccel);
     stepper.setCurrentPosition(0);
     stepper.moveTo(100);
 
-    while (stepper.currentPosition() > SHUTTER_STEP_REVOL / 2) {
+    while (stepper.currentPosition() > parameters.params.shutterStepRev / 2) {
         stepper.run();
     }
     stepper.stop();
@@ -116,18 +116,18 @@ void Shutter::fromage() {
         debug("fromage", String("begin"));
         digitalWrite(SHUTTER_PIN_ENABLE, LOW);
         stepper.setCurrentPosition(0);
-        stepper.moveTo(SHUTTER_STEP_REVOL);
+        stepper.moveTo(parameters.params.shutterStepRev);
         bMoving = true;
     }
     if (stepper.distanceToGo() != 0) {
         stepper.run();
         //TODO: geestion du flash
-        if(stepper.currentPosition() == SHUTTER_STEP_REVOL / 2){
+        if(stepper.currentPosition() == parameters.params.shutterStepRev / 2){
             flashStartMillis = millis();
             digitalWriteFast(FLASH_PIN, HIGH);
         }
         unsigned long currentMillis = millis();
-        if(currentMillis - flashStartMillis >= 20){
+        if(currentMillis - flashStartMillis >= parameters.params.flashTime){
             if(!flashTriggered){
                 digitalWriteFast(FLASH_PIN, LOW);
             }
