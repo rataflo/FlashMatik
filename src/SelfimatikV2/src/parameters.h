@@ -12,6 +12,7 @@ public:
     storage getParameters();
     void loadParameters();
     void updateParameters();
+    void dumpParameters();
 };
 
 extern ParametersHandler parameters; // Declare the global instance of Parameters

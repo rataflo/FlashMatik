@@ -23,13 +23,13 @@ void Scissor::init() {
 
     tmc.begin();
     tmc.toff(5);                 // Enables driver in software
-    tmc.rms_current(1900);        // Set motor RMS current
-    tmc.microsteps(0);          // Set microsteps to 1/16th
-    tmc.pwm_autoscale(false);
+    tmc.rms_current(1900);       // 1.9A RMS (moteur 2.1A) : couple de coupe maximal
+    tmc.microsteps(0);          // PAS COMPLETS (MRES=8) - comme l'ancienne version fonctionnelle
+    tmc.pwm_autoscale(true);
     tmc.en_spreadCycle(true);   // SpreadCycle pour meilleures performances vitesse
-    tmc.tbl(2);                 // Blank time (1-2 pour vitesse)
-    tmc.hend(6);                // Hysteresis end (0-7, plus bas = plus rapide)
-    tmc.hstrt(5);               // Hysteresis start (0-7)
+    tmc.tbl(1);                 // Blank time (1-2 pour vitesse)
+    tmc.hend(2);                // Hysteresis end (0-7, plus bas = plus rapide)
+    tmc.hstrt(3);               // Hysteresis start (0-7)
 
     stepper.setCurrentPosition(0);
     stepper.setMaxSpeed(parameters.params.scissorSpeed);
@@ -68,7 +68,7 @@ void Scissor::close() {
     if (digitalReadFast(SCISSOR_ENDSTOP_PIN)) {
         stepper.run();
     } else {
-        //Serial.println(stepper.currentPosition());
+        Serial.println(stepper.currentPosition());
         stepper.stop();
         digitalWrite(SCISSOR_PIN_ENABLE, HIGH);
         bMoving = false;

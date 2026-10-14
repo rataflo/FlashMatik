@@ -92,10 +92,12 @@
 
 #define ROT_SPEED 300
 #define ROT_ACCEL 300
-// TODO 7 bras: recalibrer au banc - 14 positions = 360/14 = 25.7 degres (vs 30 degres sur 12).
-// Ces valeurs sont celles du spider 6 bras, a mesurer avec le menu Setup > Rotation.
-#define X_ROTATE_PAIR 300
-#define X_ROTATE_IMPAIR 340 //420
+// 7 bras / 14 tanks : valeurs mesurees au banc le 2026-07-31 (tests/src/test_rotation.cpp).
+// T = 4940 pas/tour, S = T/7 = 705.7 pas/bras, S/2 = 352.86 pas/position.
+// rotStepPair = S/2 arrondi. rotStepImpair > S - NB_STEP_CENTER_ARM - rotStepPair
+// (= 337 max sur l'ecart mesure 694..715) avec marge, arret sur l'opto a chaque tour impair.
+#define X_ROTATE_PAIR 353
+#define X_ROTATE_IMPAIR 400 //420
 
 #define Y_SPEED 2800 //3000 //4000 //8000
 #define Y_ACCEL 800 //1000 //10000
@@ -113,21 +115,22 @@
 #define SHUTTER_ACCEL 400//1450 // 1450 => 1s, 5500 => 1/2s, 22000 => 1/4s, 30000 => max, 191ms less than 1/8s
 #define SHUTTER_STEP_REVOL 215 // Number of step for a full rotation of the shutter
 
-//#define SCISSOR_SPEED 8000 //1500
-//#define SCISSOR_ACCEL 10000 //2500
-#define SCISSOR_SPEED 8000 //1500
-#define SCISSOR_ACCEL 9000 //2500
-//#define SCISSOR_STEP_OPENED 450 //850 // Number of step to fully open the scissor.
-#define SCISSOR_STEP_OPENED 240 //850 // Number of step to fully open the scissor.
+// Scissor : axe pilote en PAS COMPLETS (TMC MRES=8, force explicitement dans scissor.cpp)
+// pour le couple maximal. Moteur NEMA34 2.1A/65Ncm, train 40T->20T (x2 vitesse sur la courroie).
+// 220 pas complets = 1.1 tour moteur = ~2.2 tours de courroie : valeur de reference machine.
+// La coupe est limitee en accel : pic ~ sqrt(a*d) = 1400 pas/s, duree ~400ms.
+#define SCISSOR_SPEED 8000 // pas complets/s
+#define SCISSOR_ACCEL 9000 // pas complets/s^2
+#define SCISSOR_STEP_OPENED 220 // pas complets pour ouvrir la cisaille
 
-#define NB_STEP_PAPER_ONE_SHOT 1240 // Number of step to move to another shot.
-#define NB_STEP_PAPER_CUT 2520 // Number of step to move paper to cut position
-#define NB_STEP_PAPER_OUT 3700 // Number of step to move out paper.Previous:1285
+#define NB_STEP_PAPER_ONE_SHOT 1824 // Number of step to move to another shot. Previous: 1860 (bande 20.0cm: x20/20.4), 1240 (x3/2 gear 20T/60T)
+#define NB_STEP_PAPER_CUT 3706 // Number of step to move paper to cut position. Previous: 3780 (bande 20.0cm: x20/20.4), 2520
+#define NB_STEP_PAPER_OUT 5441 // Number of step to move out paper. Previous: 5550 (bande 20.0cm: x20/20.4), 3700, 1285
 #define PAPER_SPEED 1000
 #define PAPER_ACCEL 800
 #define PAPER_OUT_SPEED 1000
 #define PAPER_OUT_ACCEL 1500
-#define DELTA_FIRST_SHOT 960 //Delta in step to do after paper reach opto 1. Previous: -80
+#define DELTA_FIRST_SHOT 1440 //Delta in step to do after paper reach opto 1. Previous: 960 (x3/2 gear 20T/60T), -80
 
 #define INIT_SPEED 1000 //4000
 #define INIT_ACCEL 400 //5000

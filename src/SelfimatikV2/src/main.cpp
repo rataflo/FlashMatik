@@ -133,8 +133,10 @@ void setup() {
         photoRequested = false;
     #endif*/
     
-    //scissor.cutPaper();
-    //scissor.close();
+    photoRequested = true;
+    shutter.showArrowDown();
+
+    //photoState = PAPER_CUT;
 }
 
 void loop() {

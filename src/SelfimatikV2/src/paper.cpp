@@ -68,7 +68,7 @@ void PaperHandler::init() {
     stepper.setCurrentPosition(0);
     stepper.setMaxSpeed(parameters.params.paperSpeed);
     stepper.setAcceleration(parameters.params.paperAccel);
-    stepper.moveTo(1200);
+    stepper.moveTo(1800);
 
     while (!digitalReadFast(PAPER_SWITCH1_PIN) && stepper.distanceToGo() != 0) {
         stepper.run();
