@@ -223,14 +223,12 @@ void ParametersHandler::dumpParameters() {
     Serial.print(F("bflashOn: ")); Serial.println(params.bflashOn);
     Serial.print(F("bDefineEachShot: ")); Serial.println(params.bDefineEachShot);
     Serial.print(F("nbExp: ")); Serial.println(params.nbExp);
-    for (int i = 0; i < 4; i++) {
-        Serial.print(F("shot[")); Serial.print(i); Serial.print(F("] expTime: "));
-        Serial.print(params.shotExpTimes[i]);
-        Serial.print(F(" bulbTime: ")); Serial.print(params.shotBulbTimes[i]);
-        Serial.print(F(" flashOn: ")); Serial.print(params.shotFlashOn[i]);
-        Serial.print(F(" nbExps: ")); Serial.println(params.shotNbExps[i]);
-    }
+
     Serial.println(F("--- FIN PARAMETRES ---"));
+    // Attendre que le dernier octet soit VRAIMENT émis sur l'UART0.
+    // Une TX UART0 encore en cours perturbe l'init suivante (driver Y mort).
+    // delay(200) marchait aussi mais avec ~15 ms de marge ; TXC0 est exact.
+    while (!(UCSR0A & (1 << TXC0))) { }
 }
 
 void ParametersHandler::updateParameters() {
