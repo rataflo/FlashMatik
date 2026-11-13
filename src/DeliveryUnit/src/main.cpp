@@ -9,6 +9,7 @@
 #define PIN_LED 13
 #define PIN_START 4
 
+
 #define NB_STEPS -14000
 #define MAX_SPEED 2400
 #define ACCEL 2600
@@ -29,12 +30,13 @@ void setup() {
 
   stepper.setMaxSpeed(MAX_SPEED);
   stepper.setAcceleration(ACCEL);
-  delay(1000); // Wait for selfimatik board to start unless activate automatically exit.
+  delay(5000); // Wait for selfimatik board to start unless activate automatically exit.
 }
 
 void loop() {
   
     if(digitalRead(PIN_START) == HIGH){
+      Serial.println("Start delivery");
       digitalWrite(PIN_ENABLE, LOW);
       digitalWrite(PIN_LED, HIGH);
       

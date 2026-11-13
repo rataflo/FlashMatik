@@ -26,8 +26,9 @@ struct Test {
 };
 
 static Test tests[] = {
-    {"sg2_ident", test_sg2_ident_setup, test_sg2_ident_loop, test_sg2_ident_teardown},
-    // Les autres axes (Y, ROT) = une ligne de plus ici quand on les ajoutera.
+    {"sg2 Y",   test_sg2_y_setup,   test_sg2_y_loop,   test_sg2_y_teardown},
+    {"sg2 ROT", test_sg2_rot_setup, test_sg2_rot_loop, test_sg2_rot_teardown},
+    {"home Y",  test_home_y_setup,  test_home_y_loop,  test_home_y_teardown},
 };
 static int active = -1;
 
@@ -51,7 +52,7 @@ void setup() {
     Serial.begin(115200);
     delay(500);
     Serial.println(F("=== BENCH RUNNER ==="));
-    Serial.println(F("1 = sg2_ident (SCISSOR) | s = stop | h = aide"));
+    Serial.println(F("1 = sg2 Y | 2 = sg2 ROT | y = home Y | s = stop | h = aide"));
 }
 
 void loop() {
@@ -68,8 +69,14 @@ void loop() {
             case '1':
                 startTest(0);
                 break;
+            case '2':
+                startTest(1);
+                break;
+            case 'y':
+                startTest(2);
+                break;
             case 'h':
-                Serial.println(F("1 = sg2_ident (SCISSOR) | s = stop"));
+                Serial.println(F("1 = sg2 Y | 2 = sg2 ROT | y = home Y | s = stop"));
                 break;
         }
     }

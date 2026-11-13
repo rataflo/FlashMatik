@@ -431,12 +431,12 @@ void handleDevState() {
         case UP:
             if(!dev.isYEndMove()){
                 digitalWriteFast(SECOND_EXPOSURE_PIN, LOW);
-                dev.up(false, dev.exitNeeded() ? parameters.params.yPairDistance : parameters.params.yDistance + 20, false);
+                dev.up(dev.exitNeeded(), parameters.params.yDistance + 20, false);
             }else{
                 dev.resetMove();
                 
                 if(dev.exitNeeded()){
-                    devState = ROT_EXIT;
+                    devState = WAIT_EXIT;
                 }else{
                     devState = DRIP;
                 }

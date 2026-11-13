@@ -46,7 +46,7 @@ void Dev::init() {
     delay(100);
     tmcY.begin();
     tmcY.toff(5);                 // Enables driver in software
-    tmcY.rms_current(1200);        // Set motor RMS current avant 1500.
+    tmcY.rms_current(1900);        // Set motor RMS current avant 1500.
     tmcY.microsteps(0);          // Set microsteps to half step
     tmcY.pwm_autoscale(true);
     tmcY.en_spreadCycle(true);   // SpreadCycle pour meilleures performances vitesse
@@ -90,6 +90,7 @@ void Dev::initY() {
     stepperY.setAcceleration(parameters.params.initAccel);
     stepperY.moveTo(parameters.params.yDistance+50);
 
+    unsigned long tY = millis();
     while (digitalReadFast(Y_ENDSTOP_PIN)) {
         stepperY.run();
     }
@@ -288,16 +289,17 @@ void Dev::up(bool bActivateExit, long nbSteps, bool bManual) {
         stepperY.moveTo(nbSteps);
         bYMoving = true;
 
-        if(bActivateExit){
-            digitalWriteFast(EXIT_PIN, HIGH);
-        }
+        
+    }
+
+    // Activate exit when Y is near the end of its movement
+    if(bActivateExit && stepperY.distanceToGo() < 100){
+        digitalWriteFast(EXIT_PIN, HIGH);
     }
 
     if (!digitalReadFast(Y_ENDSTOP_PIN) || stepperY.distanceToGo() == 0) {
         //stepperY.stop();
         //stepperY.run();
-        debug("up", String("currPos: ") + stepperY.currentPosition());
-        debug("up", !digitalReadFast(Y_ENDSTOP_PIN) ? String("end") : String("end but not endstop"));
         stepperY.setCurrentPosition(0);
         if(bActivateExit){
             digitalWriteFast(EXIT_PIN, LOW);
